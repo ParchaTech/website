@@ -1,0 +1,34 @@
+:root {
+  --primary-font: "Golos Text", sans-serif;
+  --secondary-font: "Bebas Neue", sans-serif;
+}
+
+.text-header {
+  font-family: var(--secondary-font);
+  font-size: 48px;
+  font-style: normal;
+  line-height: 100%;
+}
+
+.text-subheader {
+  font-family: var(--secondary-font);
+  font-size: 36px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.text-body {
+  font-family: var(--primary-font);
+  line-height: 150%;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.text-label {
+  font-family: var(--primary-font);
+  line-height: 100%;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+}

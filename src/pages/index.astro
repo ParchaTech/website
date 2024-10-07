@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import Layout from "@/layouts/Layout.astro";
+import heroImage from "@/assets/hero_image.svg";
+import heroIlustration from "@/assets/hero_graphic.svg";
+---
+
+<Layout title="ParchaTech">
+  <main>
+    <section>
+      <div class="hero__bg"></div>
+      <Image
+        class="hero__ilustration"
+        src={heroIlustration}
+        alt="Figura ovalada con una estrella de color naranja orbitando alrededor"
+      />
+
+      <div class="hero__container">
+        <h1 class="hero__header hero__header--white">
+          Tecnología y<br />amigos<br />en un mismo<br />
+          <span class="hero__header--black">lugar</span>
+        </h1>
+        <Image
+          class="hero__image"
+          src={heroImage}
+          alt="Ilustración de tres personas sentadas con una taza de café en la mano"
+        />
+      </div>
+
+      <p class="text-body hero__description">
+        ParchaTech es una comunidad que brinda charlas enfocadas en el
+        crecimiento personal y profesional, en el mundo de la tecnología.
+      </p>
+
+      <div class="hero__btn-container">
+        <!-- 	<a class="btn btn--primary" href="#talks">Agenda</a>
+			  <a class="link" href="">Conocer más</a> -->
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+</style>
