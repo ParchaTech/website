@@ -1,0 +1,16 @@
+.talks__header {
+  margin-bottom: 42px;
+}
+
+.talks__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.talks__card {
+  border: 1px solid red;
+  width: 360px;
+  height: 426px;
+}

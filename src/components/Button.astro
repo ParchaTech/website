@@ -1,0 +1,50 @@
+---
+interface Props {
+  text: string;
+  type: "primary" | "secondary" | "link";
+  href?: string;
+}
+
+const { text, type, href } = Astro.props;
+const buttonClasses = {
+  primary: "btn--primary",
+  secondary: "btn--secondary",
+  link: "btn--link",
+};
+---
+
+<a class:list={["btn", buttonClasses[type]]} href={href}>
+  {text}
+</a>
+
+<style>
+  .btn {
+    display: block;
+    max-width: 180px;
+    padding: 12px 55px;
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 50px;
+  }
+
+  .btn--primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+
+  .btn--secondary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+  }
+
+  .btn--link {
+    padding: 0;
+    font-size: 1rem;
+    font-weight: normal;
+    color: var(--primary-color);
+    font-family: var(--primary-font);
+    text-decoration: underline;
+  }
+</style>

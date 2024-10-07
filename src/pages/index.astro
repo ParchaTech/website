@@ -1,13 +1,14 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
+import Button from "@/components/Button.astro";
 import heroImage from "@/assets/hero_image.svg";
 import heroIlustration from "@/assets/hero_graphic.svg";
 ---
 
 <Layout title="ParchaTech">
   <main>
-    <section>
+    <section id="hero">
       <div class="hero__bg"></div>
       <Image
         class="hero__ilustration"
@@ -33,8 +34,18 @@ import heroIlustration from "@/assets/hero_graphic.svg";
       </p>
 
       <div class="hero__btn-container">
-        <!-- 	<a class="btn btn--primary" href="#talks">Agenda</a>
-			  <a class="link" href="">Conocer más</a> -->
+        <Button text="Agenda" type="primary" href="/#talks" />
+        <Button text="Conocer más" type="link" href="/" />
+      </div>
+    </section>
+
+    <section id="talks">
+      <h2 class="text-header talks__header">Próximas<br />Charlas</h2>
+      <div class="talks__container">
+        <!-- Connect Contentful here -->
+        <div class="talks__card"></div>
+        <div class="talks__card"></div>
+        <div class="talks__card"></div>
       </div>
     </section>
   </main>
@@ -45,5 +56,13 @@ import heroIlustration from "@/assets/hero_graphic.svg";
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+  }
+
+  #talks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 250px 0;
   }
 </style>

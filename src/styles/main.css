@@ -2,4 +2,6 @@
 @import url(core/colors.css);
 @import url(core/typography.css);
 
+/* Index page - Sections */
 @import url(index/hero.css);
+@import url(index/talks.css);
