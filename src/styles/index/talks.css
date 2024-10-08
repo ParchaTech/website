@@ -1,5 +1,6 @@
 .talks__header {
-  margin-bottom: 42px;
+  margin-bottom: 75px;
+  width: 100%;
 }
 
 .talks__container {
@@ -13,4 +14,13 @@
   border: 1px solid red;
   width: 360px;
   height: 426px;
+}
+
+.talks__header-divider {
+  display: block;
+  text-align: center;
+  width: 30%;
+  height: 2px;
+  background-color: var(--primary-color);
+  margin: 4px auto;
 }

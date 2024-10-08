@@ -18,6 +18,14 @@
   font-weight: normal;
 }
 
+.text-title {
+  font-family: var(--primary-font);
+  line-height: 150%;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: bold;
+}
+
 .text-body {
   font-family: var(--primary-font);
   line-height: 150%;

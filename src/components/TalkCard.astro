@@ -1,0 +1,55 @@
+---
+import Button from "./Button.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description: string;
+  date: string;
+  signUpURL: string;
+  thumbnail: string;
+  color: string;
+}
+
+const { title, description, date, signUpURL, thumbnail, color } = Astro.props;
+---
+
+<article class="card">
+  <Image
+    src={thumbnail}
+    alt="Ilustración gráfica con el logo respectivo para la charla"
+    inferSize
+  />
+  <div class="card__container">
+    <h3 class="text-title card__title">{title}</h3>
+    <p class="text-label card__label">{date}</p>
+    <p class="card__description">{description}</p>
+    <Button
+      text="inscribirse"
+      type="full-width"
+      href={signUpURL}
+      backgroundColor={color}
+    />
+  </div>
+</article>
+
+<style>
+  .card {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    max-width: 360px;
+    width: 100%;
+  }
+
+  .card__container {
+    padding: 24px;
+  }
+
+  .card__title {
+    margin: 8px 0;
+  }
+
+  .card__description {
+    margin: 42px 0;
+  }
+</style>

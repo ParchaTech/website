@@ -1,15 +1,17 @@
 ---
 interface Props {
   text: string;
-  type: "primary" | "secondary" | "link";
+  type: "primary" | "secondary" | "link" | "full-width";
   href?: string;
+  backgroundColor?: string;
 }
 
-const { text, type, href } = Astro.props;
+const { text, type, href, backgroundColor } = Astro.props;
 const buttonClasses = {
   primary: "btn--primary",
   secondary: "btn--secondary",
   link: "btn--link",
+  "full-width": "btn--full-width",
 };
 ---
 
@@ -17,7 +19,7 @@ const buttonClasses = {
   {text}
 </a>
 
-<style>
+<style define:vars={{ backgroundColor }}>
   .btn {
     display: block;
     max-width: 180px;
@@ -26,6 +28,7 @@ const buttonClasses = {
     font-family: var(--primary-font);
     font-weight: bold;
     text-decoration: none;
+    text-align: center;
     border-radius: 50px;
   }
 
@@ -46,5 +49,14 @@ const buttonClasses = {
     color: var(--primary-color);
     font-family: var(--primary-font);
     text-decoration: underline;
+  }
+
+  .btn--full-width {
+    font-size: 18px;
+    max-width: 100%;
+    border-radius: 4px;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    background-color: var(--backgroundColor);
   }
 </style>

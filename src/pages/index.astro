@@ -1,9 +1,48 @@
 ---
 import { Image } from "astro:assets";
+
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/Button.astro";
+import TalkCard from "@/components/TalkCard.astro";
+
 import heroImage from "@/assets/hero_image.svg";
 import heroIlustration from "@/assets/hero_graphic.svg";
+
+import { contentfulClient, type Talk } from "@/lib/contentful";
+import type { Asset } from "contentful";
+
+const talkEntries = await contentfulClient.getEntries<Talk>({
+  content_type: "talk",
+  //@ts-ignore
+  order: "fields.date",
+});
+
+const talksList = talkEntries?.items?.map((item) => {
+  const { title, date, description, signUpUrl, thumbnail, color } = item.fields;
+  let fullImageURL;
+
+  if (thumbnail && "fields" in thumbnail) {
+    const asset = thumbnail as Asset;
+    const assetURL = asset.fields.file?.url?.toString();
+    fullImageURL = `https:${assetURL}`;
+  }
+
+  return {
+    title,
+    date: new Date(date).toLocaleString("es-Es", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    }),
+    description,
+    signUpUrl,
+    thumbnail: fullImageURL ?? "",
+    color,
+  };
+});
 ---
 
 <Layout title="ParchaTech">
@@ -40,12 +79,24 @@ import heroIlustration from "@/assets/hero_graphic.svg";
     </section>
 
     <section id="talks">
-      <h2 class="text-header talks__header">Próximas<br />Charlas</h2>
+      <h2 class="text-header talks__header">
+        Próximas<br />
+        <span class="talks__header-divider"></span>
+        Charlas
+      </h2>
       <div class="talks__container">
-        <!-- Connect Contentful here -->
-        <div class="talks__card"></div>
-        <div class="talks__card"></div>
-        <div class="talks__card"></div>
+        {
+          talksList.map((talk) => (
+            <TalkCard
+              title={talk.title}
+              description={talk.description}
+              date={talk.date}
+              signUpURL={talk.signUpUrl}
+              thumbnail={talk.thumbnail}
+              color={talk.color}
+            />
+          ))
+        }
       </div>
     </section>
   </main>
