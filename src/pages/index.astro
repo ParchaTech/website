@@ -8,41 +8,10 @@ import TalkCard from "@/components/TalkCard.astro";
 import heroImage from "@/assets/hero_image.svg";
 import heroIlustration from "@/assets/hero_graphic.svg";
 
-import { contentfulClient, type Talk } from "@/lib/contentful";
-import type { Asset } from "contentful";
+import { getTalkEntries, getFrequentSpeakers } from "@/lib/contentful";
 
-const talkEntries = await contentfulClient.getEntries<Talk>({
-  content_type: "talk",
-  //@ts-ignore
-  order: "fields.date",
-});
-
-const talksList = talkEntries?.items?.map((item) => {
-  const { title, date, description, signUpUrl, thumbnail, color } = item.fields;
-  let fullImageURL;
-
-  if (thumbnail && "fields" in thumbnail) {
-    const asset = thumbnail as Asset;
-    const assetURL = asset.fields.file?.url?.toString();
-    fullImageURL = `https:${assetURL}`;
-  }
-
-  return {
-    title,
-    date: new Date(date).toLocaleString("es-Es", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    }),
-    description,
-    signUpUrl,
-    thumbnail: fullImageURL ?? "",
-    color,
-  };
-});
+const talkList = await getTalkEntries();
+const frequentSpeakers = await getFrequentSpeakers();
 ---
 
 <Layout title="ParchaTech">
@@ -55,26 +24,28 @@ const talksList = talkEntries?.items?.map((item) => {
         alt="Figura ovalada con una estrella de color naranja orbitando alrededor"
       />
 
-      <div class="hero__container">
-        <h1 class="hero__header hero__header--white">
-          Tecnología y<br />amigos<br />en un mismo<br />
-          <span class="hero__header--black">lugar</span>
-        </h1>
-        <Image
-          class="hero__image"
-          src={heroImage}
-          alt="Ilustración de tres personas sentadas con una taza de café en la mano"
-        />
-      </div>
+      <div class="content-layout">
+        <div class="hero__container">
+          <h1 class="hero__header hero__header--white">
+            Tecnología y<br />amigos<br />en un mismo<br />
+            <span class="hero__header--black">lugar</span>
+          </h1>
+          <Image
+            class="hero__image"
+            src={heroImage}
+            alt="Ilustración de tres personas sentadas con una taza de café en la mano"
+          />
+        </div>
 
-      <p class="text-body hero__description">
-        ParchaTech es una comunidad que brinda charlas enfocadas en el
-        crecimiento personal y profesional, en el mundo de la tecnología.
-      </p>
+        <p class="text-body hero__description">
+          ParchaTech es una comunidad que brinda charlas enfocadas en el
+          crecimiento personal y profesional, en el mundo de la tecnología.
+        </p>
 
-      <div class="hero__btn-container">
-        <Button text="Agenda" type="primary" href="/#talks" />
-        <Button text="Conocer más" type="link" href="/" />
+        <div class="hero__btn-container">
+          <Button text="Agenda" type="primary" href="/#talks" />
+          <Button text="Conocer más" type="link" href="/" />
+        </div>
       </div>
     </section>
 
@@ -86,7 +57,7 @@ const talksList = talkEntries?.items?.map((item) => {
       </h2>
       <div class="talks__container">
         {
-          talksList.map((talk) => (
+          talkList.map((talk) => (
             <TalkCard
               title={talk.title}
               description={talk.description}
@@ -99,13 +70,70 @@ const talksList = talkEntries?.items?.map((item) => {
         }
       </div>
     </section>
+
+    <section id="speakers">
+      <div class="speakers__grid-overlay"></div>
+      <h2 class="text-header speakers__header">
+        <span class="talks__header-divider"></span>
+        Speakers
+        <span class="talks__header-divider"></span>
+      </h2>
+      <div class="speakers__list">
+        {
+          frequentSpeakers.map((speaker) => (
+            <div class="speakers__item">
+              <div class="speakers__border">
+                <Image
+                  class="speakers__pic"
+                  src={speaker.photoURL}
+                  alt="Foto del rostro del orador"
+                  inferSize
+                />
+              </div>
+              <h3 class="text-subheader" set:html={speaker.name} />
+              <p class="text-title" set:html={speaker.jobPosition} />
+              <Image
+                class="speakers__company-logo"
+                src={speaker.companyLogoURL}
+                alt="Logo de la compañía donde trabaja el orador"
+                inferSize
+              />
+            </div>
+          ))
+        }
+      </div>
+      <div class="bg-panel width-40"></div>
+      <div class="bg-panel"></div>
+    </section>
+
+    <section id="volunteer">
+      <div class="content-layout">
+        <h2 class="text-header volunteer__header">
+          Sé parte de la<br />comunidad
+        </h2>
+        <p class="volunteer__text">
+          Somos un grupo de amigos que se conocieron durante la carrera de
+          Ingeniería en Sistemas, en la Universidad del Valle en Cali. Después
+          graduarnos, y buscando la manera de nunca parar de aprender, quisimos
+          crear espacios para la enseñanza y el crecimiento personal dentro del
+          sector. Así nació ParchaTech, una iniciativa de charlas, que no sólo
+          busca compartir el conocimiento con la comunidad, sino también ayudar
+          a practicar esas habilidades blandas que siempre vamos a necesitar,
+          como la oratoria y el hablar en público.<br /><br />
+          Hoy, nos enfocamos en crear experiencias educativas que van más allá del
+          contenido técnico, donde cualquier persona pueda tener la oportunidad de
+          compartir, aprender y parcharse.
+        </p>
+        <Button type="secondary" text="Participar" />
+      </div>
+    </section>
   </main>
 </Layout>
 
 <style>
-  main {
+  .content-layout {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1440px;
     margin: 0 auto;
   }
 
@@ -115,5 +143,19 @@ const talksList = talkEntries?.items?.map((item) => {
     justify-content: center;
     align-items: center;
     margin: 250px 0;
+  }
+
+  #speakers {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #volunteer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 150px 0;
   }
 </style>

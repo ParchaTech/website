@@ -1,0 +1,9 @@
+.volunteer__header {
+  color: var(--secondary-color);
+  text-align: left;
+}
+
+.volunteer__text {
+  width: 50%;
+  margin: 24px 0;
+}

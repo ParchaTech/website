@@ -9,6 +9,7 @@
   font-style: normal;
   line-height: 100%;
   text-align: center;
+  font-weight: normal;
 }
 
 .text-subheader {
@@ -16,11 +17,12 @@
   font-size: 36px;
   font-style: normal;
   font-weight: normal;
+  line-height: 100%;
 }
 
 .text-title {
   font-family: var(--primary-font);
-  line-height: 150%;
+  line-height: 100%;
   font-size: 20px;
   font-style: normal;
   font-weight: bold;

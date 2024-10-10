@@ -5,3 +5,5 @@
 /* Index page - Sections */
 @import url(index/hero.css);
 @import url(index/talks.css);
+@import url(index/speakers.css);
+@import url(index/volunteer.css);

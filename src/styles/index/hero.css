@@ -54,5 +54,5 @@
 .hero__ilustration {
   position: absolute;
   top: 268px;
-  right: calc((100vw - 50%) + 90px);
+  right: calc(50vw + 240px);
 }
