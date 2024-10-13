@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="205" height="180" fill="none">
+  <g filter="url(#a)">
+    <path fill="url(#b)" fill-rule="evenodd" d="M201.152 180H0V12.146C17.919 4.333 37.703 0 58.5 0 139.41 0 205 65.59 205 146.5c0 11.526-1.331 22.741-3.848 33.5Z" clip-rule="evenodd"/>
+  </g>
+  <defs>
+    <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="rotate(-40.914 315.725 178.53) scale(281.892)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EFB01E"/>
+      <stop offset=".86" stop-color="#5908D1"/>
+    </radialGradient>
+    <filter id="a" width="226" height="195" x="-21" y="0" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+      <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feMorphology in="SourceAlpha" radius="11" result="effect1_innerShadow_2153_153"/>
+      <feOffset dx="-21" dy="15"/>
+      <feGaussianBlur stdDeviation="21"/>
+      <feComposite in2="hardAlpha" k2="-1" k3="1" operator="arithmetic"/>
+      <feColorMatrix values="0 0 0 0 0.0791667 0 0 0 0 0.0745486 0 0 0 0 0.0745486 0 0 0 0.61 0"/>
+      <feBlend in2="shape" result="effect1_innerShadow_2153_153"/>
+    </filter>
+  </defs>
+</svg>

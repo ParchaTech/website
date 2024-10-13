@@ -1,6 +1,19 @@
+#talks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 240px 0;
+  padding: 120px 0;
+}
+
 .talks__header {
   margin-bottom: 75px;
   width: 100%;
+}
+
+.talks__header > .divider {
+  width: 30%;
 }
 
 .talks__container {

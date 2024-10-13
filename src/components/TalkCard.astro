@@ -9,9 +9,11 @@ interface Props {
   signUpURL: string;
   thumbnail: string;
   color: string;
+  ctaDisabled: boolean;
 }
 
-const { title, description, date, signUpURL, thumbnail, color } = Astro.props;
+const { title, description, date, signUpURL, thumbnail, color, ctaDisabled } =
+  Astro.props;
 ---
 
 <article class="card">
@@ -24,12 +26,24 @@ const { title, description, date, signUpURL, thumbnail, color } = Astro.props;
     <h3 class="text-title card__title">{title}</h3>
     <p class="text-label card__label">{date}</p>
     <p class="card__description">{description}</p>
-    <Button
-      text="inscribirse"
-      type="full-width"
-      href={signUpURL}
-      backgroundColor={color}
-    />
+    {
+      ctaDisabled ? (
+        <Button
+          text="Pronto"
+          type="full-width"
+          href={signUpURL}
+          backgroundColor="#4B4E53"
+          disabled
+        />
+      ) : (
+        <Button
+          text="inscribirse"
+          type="full-width"
+          href={signUpURL}
+          backgroundColor={color}
+        />
+      )
+    }
   </div>
 </article>
 

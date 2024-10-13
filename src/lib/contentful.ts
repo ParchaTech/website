@@ -62,8 +62,15 @@ export const getTalkEntries = async () => {
   });
 
   const talksList = talkEntries?.items?.map((item) => {
-    const { title, date, description, signUpUrl, thumbnail, color } =
-      item.fields;
+    const {
+      title,
+      date,
+      description,
+      signUpUrl,
+      thumbnail,
+      color,
+      ctaDisabled,
+    } = item.fields;
 
     const fullImageURL = getAssetURL(thumbnail);
 
@@ -81,6 +88,7 @@ export const getTalkEntries = async () => {
       signUpUrl,
       thumbnail: fullImageURL,
       color,
+      ctaDisabled,
     };
   });
 
