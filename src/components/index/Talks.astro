@@ -1,0 +1,32 @@
+---
+// Content query
+import { getTalkEntries } from "@/lib/contentful";
+
+// Components
+import TalkCard from "@/components/TalkCard.astro";
+
+const talkList = await getTalkEntries();
+---
+
+<section id="talks">
+  <h2 class="text-header talks__header">
+    Próximas<br />
+    <span class="divider"></span>
+    Charlas
+  </h2>
+  <div class="talks__container">
+    {
+      talkList.map((talk) => (
+        <TalkCard
+          title={talk.title}
+          description={talk.description}
+          date={talk.date}
+          signUpURL={talk.signUpUrl}
+          thumbnail={talk.thumbnail}
+          color={talk.color}
+          ctaDisabled={talk.ctaDisabled}
+        />
+      ))
+    }
+  </div>
+</section>

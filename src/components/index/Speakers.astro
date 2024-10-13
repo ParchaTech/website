@@ -1,0 +1,44 @@
+---
+// Astro Components
+import { Image } from "astro:assets";
+
+// Contentful Query
+import { getFrequentSpeakers } from "@/lib/contentful";
+
+const frequentSpeakers = await getFrequentSpeakers();
+---
+
+<section id="speakers">
+  <div class="bg__grid-overlay"></div>
+  <h2 class="text-header speakers__header">
+    <span class="divider"></span>
+    Speakers
+    <span class="divider"></span>
+  </h2>
+  <div class="speakers__list">
+    {
+      frequentSpeakers.map((speaker) => (
+        <div class="speakers__item">
+          <div class="speakers__border">
+            <Image
+              class="speakers__pic"
+              src={speaker.photoURL}
+              alt="Foto del rostro del orador"
+              inferSize
+            />
+          </div>
+          <h3 class="text-subheader" set:html={speaker.name} />
+          <p class="text-title" set:html={speaker.jobPosition} />
+          <Image
+            class="speakers__company-logo"
+            src={speaker.companyLogoURL}
+            alt="Logo de la compañía donde trabaja el orador"
+            inferSize
+          />
+        </div>
+      ))
+    }
+  </div>
+  <div class="bg-primary w-[29.5%] h-[133px] self-start"></div>
+  <div class="bg-primary w-[48.4%] h-32 self-start"></div>
+</section>

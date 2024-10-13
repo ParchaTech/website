@@ -1,0 +1,35 @@
+---
+// Astro Components
+import { Image } from "astro:assets";
+
+// Components
+import Button from "@/components/Button.astro";
+
+// Assets
+import duetonePhoto from "@/assets/duetone_photo.jpg";
+---
+
+<section id="volunteer">
+  <div class="content-layout flex">
+    <div>
+      <h2 class="text-header volunteer__header">
+        Sé parte de la<br />comunidad
+      </h2>
+      <p class="my-6 w-2/3">
+        Somos un grupo de amigos que se conocieron durante la carrera de
+        Ingeniería en Sistemas, en la Universidad del Valle en Cali. Después
+        graduarnos, y buscando la manera de nunca parar de aprender, quisimos
+        crear espacios para la enseñanza y el crecimiento personal dentro del
+        sector. Así nació ParchaTech, una iniciativa de charlas, que no sólo
+        busca compartir el conocimiento con la comunidad, sino también ayudar a
+        practicar esas habilidades blandas que siempre vamos a necesitar, como
+        la oratoria y el hablar en público.<br /><br />
+        Hoy, nos enfocamos en crear experiencias educativas que van más allá del
+        contenido técnico, donde cualquier persona pueda tener la oportunidad de
+        compartir, aprender y parcharse.
+      </p>
+      <Button type="secondary" text="Participar" />
+    </div>
+    <Image src={duetonePhoto} alt="" />
+  </div>
+</section>

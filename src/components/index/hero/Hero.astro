@@ -1,0 +1,30 @@
+---
+// Astro Component
+import { Image } from "astro:assets";
+
+// Components
+import Button from "@/components/Button.astro";
+import HeroImages from "@/components/index/hero/HeroImages.astro";
+---
+
+<section id="hero">
+  <div class="flex w-100 justify-between relative">
+    <div class="content-layout">
+      <h1 class="hero__header text-secondary w-full">
+        Tecnología y<br /><span class="hero__header--gradient">amigos</span><br
+        />en un mismo<br />
+        <span class="text-primary">lugar</span>
+      </h1>
+      <p class="text-body hero__description">
+        ParchaTech es una comunidad que brinda charlas enfocadas en el
+        crecimiento personal y profesional, dentro del mundo de la tecnología.
+      </p>
+
+      <div class="flex justify-start items-center gap-12">
+        <Button text="Agenda" type="primary" href="/#talks" />
+        <Button text="Conocer más" type="link" href="/#volunteer" />
+      </div>
+    </div>
+    <HeroImages />
+  </div>
+</section>
