@@ -1,7 +1,7 @@
 #volunteer {
   background-color: var(--primary-color);
   color: var(--secondary-color);
-  padding: 160px 0 100px;
+  padding: 160px 16px 100px;
 }
 
 .volunteer__header {

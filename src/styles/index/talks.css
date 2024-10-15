@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 120px 0;
+  padding: 120px 16px;
 }
 
 .talks__header {
@@ -12,7 +12,8 @@
 }
 
 .talks__header > .divider {
-  width: 30%;
+  /* width: 30%; */
+  width: 60%;
 }
 
 .talks__container {

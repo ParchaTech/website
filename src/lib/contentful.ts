@@ -42,7 +42,7 @@ const contentfulClient = createClient({
 });
 
 const getAssetURL = (
-  unresolvedAsset: UnresolvedLink<"Asset"> | Asset<undefined, string>
+  unresolvedAsset: UnresolvedLink<"Asset"> | Asset<undefined, string>,
 ) => {
   if (unresolvedAsset && "fields" in unresolvedAsset) {
     const asset = unresolvedAsset as Asset;

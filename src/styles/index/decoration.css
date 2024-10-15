@@ -1,7 +1,9 @@
 .bg__grid-overlay {
   background-image: url("../../assets/grid.svg");
   mask-image: linear-gradient(rgba(0, 0, 0, 0.1), 50%, rgba(0, 0, 0, 1));
-  background-position: 0 0, 0 100%;
+  background-position:
+    0 0,
+    0 100%;
   background-repeat: repeat, no-repeat;
   z-index: -1;
   width: 100%;
