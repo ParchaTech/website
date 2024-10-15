@@ -1,0 +1,80 @@
+---
+// Astro Component
+import { Image } from "astro:assets";
+
+import heroCircleLg from "@/assets/hero_circle_lg.svg";
+import heroCircleMd from "@/assets/hero_circle_md.svg";
+import heroCircleSm from "@/assets/hero_circle_sm.svg";
+
+// Components
+import Button from "@/components/Button.astro";
+---
+
+<section id="hero">
+  <div class="hero__grid">
+    <Image
+      src={heroCircleLg}
+      alt="Círculo grande de un degradado de naranja a morado"
+      class="min-h-max min-w-max z-10 relative col-start-3 row-start-1 bottom-4"
+    />
+    <Image
+      src={heroCircleMd}
+      alt="Círculo mediano de un degradado de naranja a morado"
+      class="max-h-fit z-10 relative col-start-3 row-start-1 left-3/4 top-1/3"
+    />
+    <Image
+      src={heroCircleSm}
+      alt="Círculo pequeño de un degradado de naranja a morado"
+      class="max-h-fit z-10 relative col-start-4 row-start-1 left-10 top-1/3"
+    />
+    <Image
+      src={heroCircleSm}
+      alt="Círculo pequeño de un degradado de naranja a morado"
+      class="max-h-fit z-10 relative col-start-4 row-start-1 bottom-1/4"
+    />
+    <Image
+      src={heroCircleLg}
+      alt="Círculo grande de un degradado de naranja a morado"
+      class="min-h-max min-w-max z-10 relative col-start-5 row-start-1 left-full bottom-2/3"
+    />
+    <Image
+      src={heroCircleMd}
+      alt="Círculo mediano de un degradado de naranja a morado"
+      class="max-h-fit z-10 relative col-start-5 row-start-1 left-full bottom-12"
+    />
+    <Image
+      src={heroCircleLg}
+      alt="Círculo grande de un degradado de naranja a morado"
+      class="min-h-max min-w-max z-10 relative col-start-5 row-start-2 row-span-3"
+    />
+    <Image
+      src={heroCircleSm}
+      alt="Círculo pequeño de un degradado de naranja a morado"
+      class="max-h-fit z-10 relative col-start-5 row-start-2 justify-self-end"
+    />
+    <h1
+      class="hero__header text-secondary w-full row-start-1 col-start-1 col-span-2"
+    >
+      Tecnología y<br /><span class="hero__header--gradient">amigos</span><br
+      />en un mismo<br />
+      <span class="text-primary">lugar</span>
+    </h1>
+    <p class="text-body hero__description row-start-2 col-start-1">
+      ParchaTech es una comunidad que brinda charlas enfocadas en el crecimiento
+      personal y profesional, dentro del mundo de la tecnología.
+    </p>
+    <div
+      class="row-start-4 col-start-2 flex justify-start items-center gap-12 row-start-3 col-start-1 self-start"
+    >
+      <Button text="Agenda" type="primary" href="/#talks" />
+      <Button text="Conocer más" type="link" href="/#volunteer" />
+    </div>
+    <div class="bg-primary col-start-4 row-start-1 w-screen h-full"></div>
+    <div class="bg-primary col-start-5 row-start-1 row-span-3 w-screen h-full">
+    </div>
+    <div
+      class="bg-secondary col-start-5 row-start-3 row-span-2 w-screen h-full z-20"
+    >
+    </div>
+  </div>
+</section>
