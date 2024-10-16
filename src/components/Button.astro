@@ -17,7 +17,11 @@ const buttonClasses = {
 ---
 
 <a
-  class:list={["btn", buttonClasses[type], { "btn--disabled": disabled }]}
+  class:list={[
+    "btn w-1/2 md:w-full",
+    buttonClasses[type],
+    { "btn--disabled": disabled },
+  ]}
   href={href}
 >
   {text}
@@ -27,7 +31,7 @@ const buttonClasses = {
   .btn {
     display: block;
     max-width: 180px;
-    padding: 12px 55px;
+    padding: 12px 0px;
     font-size: 1rem;
     font-family: var(--primary-font);
     font-weight: bold;

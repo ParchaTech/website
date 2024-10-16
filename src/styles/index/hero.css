@@ -1,21 +1,15 @@
 #hero {
   background: linear-gradient(
     to bottom,
-    var(--primary-color) 43%,
+    var(--primary-color) 190px,
     var(--secondary-color) 32%
   );
 }
 
 .hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
-  /*   grid-template-columns: auto repeat(4, minmax(0, 1fr)); desktop
-  grid-template-rows: repeat(4, auto); */
-  width: 100%;
-  max-width: 1440px;
-  max-height: 100vh;
-  margin: 0 auto;
   padding: 0 16px;
 }
 
@@ -41,15 +35,28 @@
 }
 
 @media (min-width: 768px) {
+  .hero__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 64px;
+  }
+}
+
+@media (min-width: 1280px) {
   #hero {
     background: linear-gradient(
       to bottom,
-      var(--primary-color) 48%,
+      var(--primary-color) 290px,
       var(--secondary-color) 32%
     );
   }
 
-  .hero__grid {
-    grid-template-columns: minmax(2, 1fr);
+  .hero__header {
+    font-size: 96px;
   }
 }

@@ -24,7 +24,7 @@ const { title, description, date, signUpURL, thumbnail, color, ctaDisabled } =
   />
   <div class="card__container">
     <h3 class="text-title card__title">{title}</h3>
-    <p class="text-label card__label">{date}</p>
+    {ctaDisabled ? null : <p class="text-label card__label">{date}</p>}
     <p class="card__description">{description}</p>
     {
       ctaDisabled ? (

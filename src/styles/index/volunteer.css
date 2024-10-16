@@ -8,3 +8,15 @@
   color: var(--secondary-color);
   text-align: left;
 }
+
+@media (min-width: 1024px) {
+  #volunteer {
+    padding: 0 64px;
+  }
+}
+
+@media (min-width: 1280px) {
+  #volunteer {
+    padding: 160px 64px 100px;
+  }
+}
