@@ -1,4 +1,5 @@
 #talks {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,11 +10,6 @@
 .talks__header {
   margin-bottom: 75px;
   width: 100%;
-}
-
-.talks__header > .divider {
-  /* width: 30%; */
-  width: 60%;
 }
 
 .talks__container {

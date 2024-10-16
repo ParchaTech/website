@@ -1,10 +1,10 @@
 #speakers {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  /* padding: 120px 0; */
+  padding-top: 80px;
 }
 
 .speakers__header {
@@ -27,6 +27,7 @@
   align-items: center;
   gap: 120px;
   flex-wrap: wrap;
+  margin-bottom: 4rem;
 }
 
 .speakers__item {
