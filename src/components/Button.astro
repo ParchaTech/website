@@ -5,9 +5,11 @@ interface Props {
   href?: string;
   backgroundColor?: string;
   disabled?: boolean;
+  targetBlank?: boolean;
 }
 
-const { text, type, href, backgroundColor, disabled } = Astro.props;
+const { text, type, href, backgroundColor, disabled, targetBlank } =
+  Astro.props;
 const buttonClasses = {
   primary: "btn--primary",
   secondary: "btn--secondary",
@@ -23,6 +25,8 @@ const buttonClasses = {
     { "btn--disabled": disabled },
   ]}
   href={href}
+  target={targetBlank ? "_blank" : "_self"}
+  rel="noreferrer"
 >
   {text}
 </a>
@@ -67,8 +71,8 @@ const buttonClasses = {
 
   .btn--full-width {
     font-size: 18px;
+    width: 100%;
     max-width: 100%;
-    border-radius: 4px;
     text-transform: uppercase;
     color: var(--secondary-color);
     background-color: var(--backgroundColor);

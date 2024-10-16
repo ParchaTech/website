@@ -24,12 +24,6 @@
   gap: 20px;
 }
 
-.talks__card {
-  border: 1px solid red;
-  width: 360px;
-  height: 426px;
-}
-
 .talks__header-divider {
   display: block;
   text-align: center;

@@ -14,6 +14,9 @@ interface Props {
 
 const { title, description, date, signUpURL, thumbnail, color, ctaDisabled } =
   Astro.props;
+
+const [eventDate, time] = date.split(", ");
+console.log(eventDate, time);
 ---
 
 <article class="card">
@@ -24,7 +27,8 @@ const { title, description, date, signUpURL, thumbnail, color, ctaDisabled } =
   />
   <div class="card__container">
     <h3 class="text-title card__title">{title}</h3>
-    {ctaDisabled ? null : <p class="text-label card__label">{date}</p>}
+    <p class="text-label card__label">{eventDate}</p>
+    {ctaDisabled ? null : <p class="text-label card__label mt-4">{time}</p>}
     <p class="card__description">{description}</p>
     {
       ctaDisabled ? (
@@ -37,10 +41,11 @@ const { title, description, date, signUpURL, thumbnail, color, ctaDisabled } =
         />
       ) : (
         <Button
-          text="inscribirse"
+          text="Inscribirse"
           type="full-width"
           href={signUpURL}
           backgroundColor={color}
+          targetBlank
         />
       )
     }
@@ -60,7 +65,7 @@ const { title, description, date, signUpURL, thumbnail, color, ctaDisabled } =
   }
 
   .card__title {
-    margin: 8px 0;
+    margin-bottom: 1rem;
   }
 
   .card__description {
