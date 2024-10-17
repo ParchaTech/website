@@ -31,3 +31,36 @@ const talkList = await getTalkEntries();
     }
   </div>
 </section>
+
+<style>
+  #talks {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 120px 16px;
+  }
+
+  .talks__header {
+    margin-bottom: 75px;
+    width: 100%;
+  }
+
+  .talks__container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .talks__header-divider {
+    display: block;
+    text-align: center;
+    width: 30%;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 4px auto;
+  }
+</style>

@@ -82,3 +82,68 @@ import Button from "@/components/Button.astro";
     </div>
   </div>
 </section>
+
+<style>
+  #hero {
+    background: linear-gradient(
+      to bottom,
+      var(--primary-color) 190px,
+      var(--secondary-color) 32%
+    );
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    padding: 0 16px;
+  }
+
+  .hero__header {
+    margin: 0px;
+    /*   font-size: 96px; desktop*/
+    font-size: 64px;
+    line-height: 100%;
+    font-family: var(--secondary-font);
+    font-weight: normal;
+  }
+
+  .hero__header--gradient {
+    color: transparent;
+    background: linear-gradient(to right, var(--orange), var(--purple));
+    background-clip: text;
+  }
+
+  .hero__description {
+    margin: 24px 0;
+    max-width: 550px;
+    color: var(--primary-color);
+  }
+
+  @media (min-width: 768px) {
+    .hero__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero__grid {
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0 64px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    #hero {
+      background: linear-gradient(
+        to bottom,
+        var(--primary-color) 290px,
+        var(--secondary-color) 32%
+      );
+    }
+
+    .hero__header {
+      font-size: 96px;
+    }
+  }
+</style>
