@@ -8,6 +8,23 @@ import TalkCard from "@/components/TalkCard.astro";
 const talkList = await getTalkEntries();
 ---
 
+<script>
+  const cards = document.querySelectorAll(".talks__header");
+  if (cards) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.3 },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+  }
+</script>
 <section id="talks">
   <div class="bg__grid-overlay-radial"></div>
   <h2 class="text-header talks__header">
@@ -39,12 +56,22 @@ const talkList = await getTalkEntries();
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 120px 16px;
+    padding: 100px 16px;
   }
 
   .talks__header {
     margin-bottom: 75px;
     width: 100%;
+    opacity: 0;
+    transform: translateY(80%);
+    transition:
+      transform 1s ease-in-out,
+      opacity 1s ease-in-out;
+  }
+
+  .talks__header.visible {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .talks__container {

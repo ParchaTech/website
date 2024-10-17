@@ -10,9 +10,10 @@ interface Props {
 
 const { text, type, href, backgroundColor, disabled, targetBlank } =
   Astro.props;
+
 const buttonClasses = {
-  primary: "btn--primary",
-  secondary: "btn--secondary",
+  primary: "bg-primary text-secondary",
+  secondary: "bg-secondary text-primary",
   link: "btn--link",
   "full-width": "btn--full-width",
 };
@@ -22,20 +23,27 @@ const buttonClasses = {
   class:list={[
     "btn w-1/2 md:w-full",
     buttonClasses[type],
-    { "btn--disabled": disabled },
+    { "pointer-events-none cursor-default": disabled },
   ]}
   href={href}
   target={targetBlank ? "_blank" : "_self"}
   rel="noreferrer"
 >
-  {text}
+  <div
+    class="relative flex h-8 w-full items-center justify-center overflow-hidden text-center leading-8"
+  >
+    <div class="animation absolute top-0 w-full">
+      <span class="block">{text}</span>
+      <span class="block">{text}</span>
+    </div>
+  </div>
 </a>
 
 <style define:vars={{ backgroundColor }}>
   .btn {
     display: block;
     max-width: 180px;
-    padding: 12px 0px;
+    padding: 8px 0px;
     font-size: 1rem;
     font-family: var(--primary-font);
     font-weight: bold;
@@ -45,27 +53,16 @@ const buttonClasses = {
     user-select: none;
   }
 
-  .btn--disabled {
-    pointer-events: none;
-    cursor: default;
-  }
-
-  .btn--primary {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-  }
-
-  .btn--secondary {
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-  }
-
   .btn--link {
     padding: 0;
     font-size: 1rem;
     font-weight: normal;
     color: var(--primary-color);
     font-family: var(--primary-font);
+  }
+
+  .btn--link .animation {
+    transform: none;
     text-decoration: underline;
   }
 
@@ -76,5 +73,14 @@ const buttonClasses = {
     text-transform: uppercase;
     color: var(--secondary-color);
     background-color: var(--backgroundColor);
+  }
+
+  .animation {
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .animation:hover {
+    transform: translateY(-50%);
   }
 </style>

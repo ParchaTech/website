@@ -1,7 +1,9 @@
 ---
-import { ContentSchemaContainsSlugError } from "node_modules/astro/dist/core/errors/errors-data";
-import Button from "./Button.astro";
+// Astro Components
 import { Image } from "astro:assets";
+
+// Components
+import Button from "./Button.astro";
 
 interface Props {
   title: string;
@@ -25,15 +27,17 @@ const [eventDate, time] = date.split(", ");
     alt="Ilustración gráfica con el logo respectivo para la charla"
     inferSize
   />
-  <div class="card__container">
-    <h3 class="text-title card__title">{title}</h3>
+  <div class="p-6">
+    <h3 class="text-title mb-6">{title}</h3>
     {
-      date !== "Invalid Date" && eventDate ? (
+      eventDate != "Invalid Date" && (
         <p class="text-label card__label">{eventDate}</p>
-      ) : null
+      )
     }
-    {ctaDisabled ? null : <p class="text-label card__label mt-4">{time}</p>}
-    <p class="card__description">{description}</p>
+
+    {!ctaDisabled && <p class="text-label card__label mt-4">{time}</p>}
+
+    <p class="my-10">{description}</p>
     {
       ctaDisabled ? (
         <Button
@@ -65,17 +69,5 @@ const [eventDate, time] = date.split(", ");
     width: 100%;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-  }
-
-  .card__container {
-    padding: 24px;
-  }
-
-  .card__title {
-    margin-bottom: 1rem;
-  }
-
-  .card__description {
-    margin: 42px 0;
   }
 </style>

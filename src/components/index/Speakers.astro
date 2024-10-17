@@ -8,6 +8,24 @@ import { getFrequentSpeakers } from "@/lib/contentful";
 const frequentSpeakers = await getFrequentSpeakers();
 ---
 
+<script>
+  const overlays = document.querySelectorAll(".overlay");
+  if (overlays) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("move");
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    overlays.forEach((overlay) => observer.observe(overlay));
+  }
+</script>
+
 <section id="speakers">
   <div class="bg__grid-overlay"></div>
   <h2 class="text-header speakers__header">
@@ -19,16 +37,19 @@ const frequentSpeakers = await getFrequentSpeakers();
     {
       frequentSpeakers.map((speaker) => (
         <div class="speakers__item">
-          <div class="speakers__border">
-            <Image
-              class="speakers__pic"
-              src={speaker.photoURL}
-              alt="Foto del rostro del orador"
-              inferSize
-            />
+          <div class="speakers__border relative">
+            <div class="relative h-full w-full overflow-hidden rounded-full">
+              <div class="overlay absolute left-0 h-full w-full bg-orange" />
+              <Image
+                class="speakers__pic"
+                src={speaker.photoURL}
+                alt="Foto del rostro del orador"
+                inferSize
+              />
+            </div>
           </div>
           <h3 class="text-subheader" set:html={speaker.name} />
-          <p class="text-title" set:html={speaker.jobPosition} />
+          <p class="text-title my-5" set:html={speaker.jobPosition} />
           <Image
             class="speakers__company-logo"
             src={speaker.companyLogoURL}
@@ -85,10 +106,6 @@ const frequentSpeakers = await getFrequentSpeakers();
     max-width: min-content;
   }
 
-  .speakers__item > p {
-    margin: 20px 0;
-  }
-
   .speakers__border {
     display: flex;
     justify-content: center;
@@ -111,5 +128,13 @@ const frequentSpeakers = await getFrequentSpeakers();
   .speakers__company-logo {
     max-width: 50%;
     height: auto;
+  }
+
+  .overlay {
+    transition: left 1s ease-in-out;
+  }
+
+  .overlay.move {
+    left: 100%;
   }
 </style>
