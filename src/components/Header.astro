@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header-layout">
-    <h2 class="header_logo">ParchaTech</h2>
+    <h2 class="header_logo slideRightAnimation">ParchaTech</h2>
   </div>
 </header>
 
@@ -23,6 +23,25 @@
     font-weight: normal;
     font-family: var(--secondary-font);
     color: var(--secondary-color);
+  }
+
+  .slideRightAnimation {
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: transform, opacity;
+    animation: slideRight 1s ease-in-out forwards;
+  }
+
+  @keyframes slideRight {
+    0% {
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
   }
 
   @media (min-width: 1024px) {

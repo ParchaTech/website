@@ -28,10 +28,10 @@ const frequentSpeakers = await getFrequentSpeakers();
 
 <section id="speakers">
   <div class="bg__grid-overlay"></div>
-  <h2 class="text-header speakers__header">
-    <span class="divider bg-primary"></span>
+  <h2 class="text-header speakers__header w-full">
+    <span class="divider max-w-[10%] bg-primary"></span>
     Speakers
-    <span class="divider bg-primary"></span>
+    <span class="divider max-w-[10%] bg-primary"></span>
   </h2>
   <div class="speakers__list">
     {
@@ -71,21 +71,16 @@ const frequentSpeakers = await getFrequentSpeakers();
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 80px;
+    padding-top: 150px;
   }
 
   .speakers__header {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 1rem;
     width: 100%;
-    margin-bottom: 75px;
-  }
-
-  .speakers__header > .divider {
-    width: 5%;
-    margin: 0;
+    margin-bottom: 100px;
   }
 
   .speakers__list {
