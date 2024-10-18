@@ -10,6 +10,44 @@ import heroCircleSm from "@/assets/hero_circle_sm.svg";
 import Button from "@/components/Button.astro";
 ---
 
+<script>
+  const addParallaxEffect = (
+    elementList: NodeListOf<Element>,
+    movementMultiplier: number,
+  ) => {
+    document.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e;
+
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      const moveX = (clientX - centerX) / centerX;
+      const moveY = (clientY - centerY) / centerY;
+
+      elementList.forEach((circle, index) => {
+        const depth = index + 1;
+        const translateX = -moveX * depth * movementMultiplier;
+        const translateY = -moveY * depth * movementMultiplier;
+
+        const htmlCircle = circle as HTMLElement;
+
+        htmlCircle.style.transform = `translate(${translateX}px, ${translateY}px)`;
+      });
+    });
+  };
+
+  const firstParallaxCircles = document.querySelectorAll(
+    ".hero__grid div:first-child > img",
+  );
+
+  const secondParallaxCircles = document.querySelectorAll(
+    ".hero__grid div:nth-child(2) > img",
+  );
+
+  addParallaxEffect(firstParallaxCircles, 30);
+  addParallaxEffect(secondParallaxCircles, 5);
+</script>
+
 <section id="hero">
   <div class="hero__grid content-layout">
     <div
@@ -23,12 +61,12 @@ import Button from "@/components/Button.astro";
       <Image
         src={heroCircleMd}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="relative top-1/4 z-10 col-start-2 row-start-1 max-h-max max-w-max xl:left-full"
+        class="relative top-1/4 z-20 col-start-2 row-start-1 max-h-max max-w-max xl:left-full"
       />
       <Image
         src={heroCircleSm}
         alt="Círculo pequeño de un degradado de naranja a morado"
-        class="relative left-16 top-8 z-10 col-start-2 row-start-1 max-h-max max-w-max xl:left-2/3 xl:top-20 xl:justify-self-end"
+        class="relative left-16 top-8 z-30 col-start-2 row-start-1 max-h-max max-w-max xl:left-3/4 xl:top-20 xl:justify-self-end"
       />
       <div class="col-start-1 row-start-1 h-2/3 w-full bg-primary"></div>
       <div class="col-start-2 row-start-1 h-full w-screen bg-primary"></div>
@@ -49,7 +87,7 @@ import Button from "@/components/Button.astro";
       <Image
         src={heroCircleMd}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="relative col-start-2 row-start-1 max-h-max max-w-max xl:left-full"
+        class="relative col-start-2 row-start-1 max-h-max max-w-max drop-shadow-lg xl:left-full"
       />
 
       <Image
@@ -74,11 +112,6 @@ import Button from "@/components/Button.astro";
     >
       <Button text="Agenda" type="primary" href="/#talks" />
       <Button text="Conocer más" type="link" href="/#volunteer" />
-    </div>
-
-    <div
-      class="z-20 col-start-5 row-span-2 row-start-3 hidden h-full w-screen bg-secondary"
-    >
     </div>
   </div>
 </section>

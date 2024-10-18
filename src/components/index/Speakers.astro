@@ -116,6 +116,11 @@ const frequentSpeakers = await getFrequentSpeakers();
     border-radius: 100px;
     width: 202px;
     height: 202px;
+    transition: transform 0.3s ease-out;
+  }
+
+  .speakers__border:hover {
+    transform: translateY(-20%);
   }
 
   .speakers__pic {
@@ -136,5 +141,15 @@ const frequentSpeakers = await getFrequentSpeakers();
 
   .overlay.move {
     left: 100%;
+  }
+
+  @keyframes slideTop {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(-20%);
+    }
   }
 </style>
