@@ -1,3 +1,5 @@
+/* Observer Animations */
+
 .slideTop {
   opacity: 0;
   transform: translateY(80%);
@@ -10,6 +12,43 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+.slideRight {
+  opacity: 0;
+  transform: translateX(-10%);
+  transition:
+    transform 1s ease-in-out,
+    opacity 1s ease-in-out;
+}
+
+.slideRight.play {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.growRight {
+  transform: scale(0);
+  transition: transform 2s ease-in-out;
+  transform-origin: left;
+  transform-style: preserve-3D;
+}
+
+.growRight.play {
+  transform: scale(100%);
+}
+
+.growLeft {
+  transform: scale(0);
+  transition: transform 2s ease-in-out;
+  transform-origin: right;
+  transform-style: preserve-3D;
+}
+
+.growLeft.play {
+  transform: scale(100%);
+}
+
+/* CSS Animations */
 
 .slideBottom-css {
   opacity: 0;
@@ -66,6 +105,14 @@
     opacity: 1;
     transform: translateX(0%);
   }
+}
+
+.onHover {
+  transition: transform 0.3s ease-out;
+}
+
+.onHover:hover {
+  transform: translateY(-20%);
 }
 
 .animation-delay-1 {

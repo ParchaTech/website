@@ -11,22 +11,23 @@ const frequentSpeakers = await getFrequentSpeakers();
 <script>
   import { addAnimationObserver } from "@/lib/observer.ts";
 
-  addAnimationObserver(".overlay", "move", 0.4);
+  addAnimationObserver("#speakers .divider", "play", 0.5);
   addAnimationObserver(".speakers__header", "play", 0.4);
+  addAnimationObserver(".overlay", "move", 0.4);
 </script>
 
 <section id="speakers">
   <div class="bg__grid-overlay"></div>
   <h2 class="text-header speakers__header slideTop w-full">
-    <span class="divider max-w-[10%] bg-primary"></span>
+    <span class="divider growLeft max-w-[10%] bg-primary"></span>
     Speakers
-    <span class="divider max-w-[10%] bg-primary"></span>
+    <span class="growRight divider max-w-[10%] bg-primary"></span>
   </h2>
   <div class="speakers__list">
     {
       frequentSpeakers.map((speaker) => (
         <div class="speakers__item">
-          <div class="speakers__border relative">
+          <div class="speakers__border onHover relative">
             <div class="relative h-full w-full overflow-hidden rounded-full">
               <div class="overlay absolute left-0 h-full w-full bg-orange" />
               <Image
@@ -100,11 +101,6 @@ const frequentSpeakers = await getFrequentSpeakers();
     border-radius: 100px;
     width: 202px;
     height: 202px;
-    transition: transform 0.3s ease-out;
-  }
-
-  .speakers__border:hover {
-    transform: translateY(-20%);
   }
 
   .speakers__pic {

@@ -12,6 +12,7 @@ import duetonePhoto from "@/assets/duetone_photo.jpg";
 <script>
   import { addAnimationObserver } from "@/lib/observer.ts";
 
+  addAnimationObserver("#volunteer .divider", "play", 0.2);
   addAnimationObserver(".volunteer__header", "play", 0.2);
 </script>
 
@@ -19,10 +20,10 @@ import duetonePhoto from "@/assets/duetone_photo.jpg";
   <div class="content-layout gap-24 xl:flex">
     <div class="mb-6">
       <div class="items-center justify-center md:flex">
-        <h2 class="text-header volunteer__header slideTop">
+        <h2 class="text-header volunteer__header slideRight">
           Sé parte de la<br />comunidad
         </h2>
-        <span class="divider bg-secondary"></span>
+        <span class="divider growRight bg-secondary"></span>
       </div>
       <p class="my-6 w-full">
         Somos un grupo de amigos que se conocieron durante la carrera de
@@ -40,10 +41,15 @@ import duetonePhoto from "@/assets/duetone_photo.jpg";
       <Button
         type="secondary"
         text="Participar"
-        href="mailto:contact@parcha.tech?subject=¡Me%20gustaría%20dar%20una%20charla!"
+        href="https://forms.gle/jVPCujUznSvDL2Mz8"
+        externalLink
       />
     </div>
-    <Image class="max-h-fit" src={duetonePhoto} alt="" />
+    <Image
+      class="max-h-fit"
+      src={duetonePhoto}
+      alt="Un grupo de tres personas, sentadas en una mesa mientras trabajan y comparten ideas."
+    />
   </div>
 </section>
 

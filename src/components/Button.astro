@@ -5,10 +5,10 @@ interface Props {
   href?: string;
   backgroundColor?: string;
   disabled?: boolean;
-  targetBlank?: boolean;
+  externalLink?: boolean;
 }
 
-const { text, type, href, backgroundColor, disabled, targetBlank } =
+const { text, type, href, backgroundColor, disabled, externalLink } =
   Astro.props;
 
 const buttonClasses = {
@@ -26,7 +26,7 @@ const buttonClasses = {
     { "pointer-events-none cursor-default": disabled },
   ]}
   href={href}
-  target={targetBlank ? "_blank" : "_self"}
+  target={externalLink ? "_blank" : "_self"}
   rel="noreferrer"
 >
   <div
