@@ -2,6 +2,7 @@
 @import url(core/colors.css);
 @import url(core/typography.css);
 @import url(core/decoration.css);
+@import url(core/animations.css);
 
 .content-layout {
   width: 100%;

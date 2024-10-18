@@ -9,25 +9,14 @@ const talkList = await getTalkEntries();
 ---
 
 <script>
-  const cards = document.querySelectorAll(".talks__header");
-  if (cards) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.3 },
-    );
+  import { addAnimationObserver } from "@/lib/observer.ts";
 
-    cards.forEach((card) => observer.observe(card));
-  }
+  addAnimationObserver(".talks__header", "play", 0.4);
 </script>
+
 <section id="talks">
   <div class="bg__grid-overlay-radial top-0"></div>
-  <h2 class="text-header talks__header">
+  <h2 class="text-header talks__header slideTop">
     Próximas<br />
     <span class="divider mx-auto my-1 bg-primary md:max-w-sm"></span>
     Charlas
@@ -62,16 +51,6 @@ const talkList = await getTalkEntries();
   .talks__header {
     margin-bottom: 100px;
     width: 100%;
-    opacity: 0;
-    transform: translateY(80%);
-    transition:
-      transform 1s ease-in-out,
-      opacity 1s ease-in-out;
-  }
-
-  .talks__header.visible {
-    opacity: 1;
-    transform: translateY(0);
   }
 
   .talks__container {

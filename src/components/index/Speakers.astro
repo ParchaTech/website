@@ -9,26 +9,15 @@ const frequentSpeakers = await getFrequentSpeakers();
 ---
 
 <script>
-  const overlays = document.querySelectorAll(".overlay");
-  if (overlays) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("move");
-          }
-        });
-      },
-      { threshold: 0.4 },
-    );
+  import { addAnimationObserver } from "@/lib/observer.ts";
 
-    overlays.forEach((overlay) => observer.observe(overlay));
-  }
+  addAnimationObserver(".overlay", "move", 0.4);
+  addAnimationObserver(".speakers__header", "play", 0.4);
 </script>
 
 <section id="speakers">
   <div class="bg__grid-overlay"></div>
-  <h2 class="text-header speakers__header w-full">
+  <h2 class="text-header speakers__header slideTop w-full">
     <span class="divider max-w-[10%] bg-primary"></span>
     Speakers
     <span class="divider max-w-[10%] bg-primary"></span>
@@ -136,15 +125,5 @@ const frequentSpeakers = await getFrequentSpeakers();
 
   .overlay.move {
     left: 100%;
-  }
-
-  @keyframes slideTop {
-    0% {
-      transform: translateY(0);
-    }
-
-    100% {
-      transform: translateY(-20%);
-    }
   }
 </style>

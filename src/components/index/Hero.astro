@@ -97,18 +97,20 @@ import Button from "@/components/Button.astro";
       />
     </div>
     <h1
-      class="hero__header col-span-2 col-start-1 row-start-1 w-full text-secondary"
+      class="hero__header slideBottom-css animation-delay-1 col-span-2 col-start-1 row-start-1 w-full text-secondary"
     >
       Tecnología y<br /><span class="hero__header--gradient">amigos</span><br
       />en un mismo<br />
       <span class="text-primary">lugar</span>
     </h1>
-    <p class="text-body hero__description col-start-1 row-start-3">
+    <p
+      class="text-body hero__description animation-delay-1 slideLeft-css col-start-1 row-start-3"
+    >
       ParchaTech es una comunidad que brinda charlas enfocadas en el crecimiento
       personal y profesional, dentro del mundo de la tecnología.
     </p>
     <div
-      class="col-start-1 row-start-4 flex items-center justify-start gap-2 self-start md:gap-6 xl:gap-12"
+      class="slideTop-css animation-delay-2 col-start-1 row-start-4 flex items-center justify-start gap-2 self-start md:gap-6 xl:gap-12"
     >
       <Button text="Agenda" type="primary" href="/#talks" />
       <Button text="Conocer más" type="link" href="/#volunteer" />
@@ -144,7 +146,7 @@ import Button from "@/components/Button.astro";
 
   .hero__header--gradient {
     color: transparent;
-    background: linear-gradient(to right, var(--orange), var(--purple));
+    background: linear-gradient(to left, var(--orange), var(--purple));
     background-clip: text;
   }
 

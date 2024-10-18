@@ -9,11 +9,17 @@ import Button from "@/components/Button.astro";
 import duetonePhoto from "@/assets/duetone_photo.jpg";
 ---
 
+<script>
+  import { addAnimationObserver } from "@/lib/observer.ts";
+
+  addAnimationObserver(".volunteer__header", "play", 0.2);
+</script>
+
 <section id="volunteer">
   <div class="content-layout gap-24 xl:flex">
     <div class="mb-6">
       <div class="items-center justify-center md:flex">
-        <h2 class="text-header volunteer__header">
+        <h2 class="text-header volunteer__header slideTop">
           Sé parte de la<br />comunidad
         </h2>
         <span class="divider bg-secondary"></span>
