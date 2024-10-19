@@ -107,6 +107,38 @@
   }
 }
 
+.bounce {
+  animation: bouncing 1.5s ease-in-out infinite;
+}
+
+.bounceSlow {
+  animation: bouncing 9s ease-in-out infinite;
+}
+
+@keyframes bouncing {
+  0%,
+  100% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(-20%);
+  }
+}
+
+.rotate {
+  animation: rotateClockwise 8s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .onHover {
   transition: transform 0.3s ease-out;
 }
