@@ -9,14 +9,23 @@ interface Props {
   title: string;
   description: string;
   date: string;
+  location: string;
   signUpURL: string;
   thumbnail: string;
   color: string;
   ctaDisabled: boolean;
 }
 
-const { title, description, date, signUpURL, thumbnail, color, ctaDisabled } =
-  Astro.props;
+const {
+  title,
+  description,
+  date,
+  location,
+  signUpURL,
+  thumbnail,
+  color,
+  ctaDisabled,
+} = Astro.props;
 
 const [eventDate, time] = date.split(", ");
 ---
@@ -27,17 +36,21 @@ const [eventDate, time] = date.split(", ");
     alt="Ilustración gráfica con el logo respectivo para la charla"
     inferSize
   />
-  <div class="p-6">
-    <h3 class="text-title mb-6">{title}</h3>
-    {
-      eventDate != "Invalid Date" && (
-        <p class="text-label card__label">{eventDate}</p>
-      )
-    }
+  <div class="flex h-full flex-col justify-between p-6">
+    <div>
+      <h3 class="text-title mb-6">{title}</h3>
+      {
+        eventDate != "Invalid Date" && (
+          <p class="text-label card__label font-bold">{eventDate}</p>
+        )
+      }
 
-    {!ctaDisabled && <p class="text-label card__label mt-4">{time}</p>}
+      {location && <p class="text-label my-2">{location}</p>}
 
-    <p class="my-10">{description}</p>
+      {!ctaDisabled && <p class="text-label card__label">{time}</p>}
+
+      <p class="my-7">{description}</p>
+    </div>
     {
       ctaDisabled ? (
         <Button
@@ -64,7 +77,6 @@ const [eventDate, time] = date.split(", ");
   .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     max-width: 360px;
     width: 100%;
     background-color: var(--primary-color);

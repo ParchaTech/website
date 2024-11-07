@@ -24,6 +24,7 @@ export interface Talk {
     title: EntryFieldTypes.Text;
     description: EntryFieldTypes.Text;
     date: EntryFieldTypes.Date;
+    location: EntryFieldTypes.Text;
     signUpUrl: EntryFieldTypes.Text;
     thumbnail: EntryFieldTypes.AssetLink;
     color: EntryFieldTypes.Text;
@@ -65,6 +66,7 @@ export const getTalkEntries = async () => {
     const {
       title,
       date,
+      location,
       description,
       signUpUrl,
       thumbnail,
@@ -84,6 +86,7 @@ export const getTalkEntries = async () => {
         minute: "2-digit",
         hour12: true,
       }),
+      location,
       description,
       signUpUrl,
       thumbnail: fullImageURL,
