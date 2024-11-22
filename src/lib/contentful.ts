@@ -56,9 +56,12 @@ const getAssetURL = (
 
 /* Queries */
 export const getTalkEntries = async () => {
+  const today = new Date().toISOString();
+
   const talkEntries = await contentfulClient.getEntries<Talk>({
     content_type: "talk",
     //@ts-ignore
+    "fields.date[gt]": today,
     order: "fields.date",
   });
 
