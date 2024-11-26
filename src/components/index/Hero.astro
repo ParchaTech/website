@@ -11,27 +11,38 @@ import Button from "@/components/Button.astro";
 ---
 
 <script>
-  const addParallaxEffect = (
-    elementList: NodeListOf<Element>,
-    movementMultiplier: number,
-  ) => {
-    document.addEventListener("mousemove", (e) => {
-      const { clientX, clientY } = e;
+  const addParallaxEffect = (elementList: NodeListOf<Element>) => {
+    elementList.forEach((element) => {
+      let animationTimeout: number;
+      const htmlElement = element as HTMLElement;
 
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
+      htmlElement.addEventListener("mouseenter", (e) => {
+        clearTimeout(animationTimeout); // Avoids popping if the cursor instantly re-enter to the element
 
-      const moveX = (clientX - centerX) / centerX;
-      const moveY = (clientY - centerY) / centerY;
+        htmlElement.style.transition = "transform 0.5s ease-out";
 
-      elementList.forEach((circle, index) => {
-        const depth = index + 1;
-        const translateX = -moveX * depth * movementMultiplier;
-        const translateY = -moveY * depth * movementMultiplier;
+        htmlElement.style.animationPlayState = "paused";
 
-        const htmlCircle = circle as HTMLElement;
+        const computedElementStyles = window.getComputedStyle(htmlElement);
+        const currentPosition = computedElementStyles.transform; // Get element position after pausing the animation
 
-        htmlCircle.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        htmlElement.style.transform = currentPosition; // Set the final animation position as the new element position
+        htmlElement.style.animation = "none";
+
+        const rect = htmlElement.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+
+        // Based on the new position and the coordinates of the cursor, move the element
+        htmlElement.style.transform = `translate(${x * -0.7}px, ${y * -0.7}px)`;
+      });
+
+      htmlElement.addEventListener("mouseleave", (e) => {
+        htmlElement.style.transform = ""; // Reset element position to its original value before pausing the animation
+
+        animationTimeout = setTimeout(() => {
+          htmlElement.style.animation = ""; // Reset the animation after giving the element some time to return to its original position.
+        }, 750);
       });
     });
   };
@@ -44,8 +55,8 @@ import Button from "@/components/Button.astro";
     ".hero__grid div:nth-child(2) > img",
   );
 
-  addParallaxEffect(firstParallaxCircles, 30);
-  addParallaxEffect(secondParallaxCircles, 5);
+  addParallaxEffect(firstParallaxCircles);
+  addParallaxEffect(secondParallaxCircles);
 </script>
 
 <section id="hero">
@@ -56,17 +67,17 @@ import Button from "@/components/Button.astro";
       <Image
         src={heroCircleLg}
         alt="Círculo grande de un degradado de naranja a morado"
-        class="relative bottom-1/3 z-10 col-start-2 row-start-1 max-h-max max-w-max xl:bottom-0"
+        class="bounceSlow relative bottom-1/3 z-10 col-start-2 row-start-1 max-h-max max-w-max xl:bottom-0"
       />
       <Image
         src={heroCircleMd}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="relative top-1/4 z-20 col-start-2 row-start-1 max-h-max max-w-max xl:left-full"
+        class="bounceSlow relative top-1/4 z-20 col-start-2 row-start-1 max-h-max max-w-max xl:left-full"
       />
       <Image
         src={heroCircleSm}
         alt="Círculo pequeño de un degradado de naranja a morado"
-        class="relative left-16 top-8 z-30 col-start-2 row-start-1 max-h-max max-w-max xl:left-3/4 xl:top-20 xl:justify-self-end"
+        class="bounceSlow relative left-16 top-8 z-30 col-start-2 row-start-1 max-h-max max-w-max xl:left-3/4 xl:top-20 xl:justify-self-end"
       />
       <div class="col-start-1 row-start-1 h-2/3 w-full bg-primary"></div>
       <div class="col-start-2 row-start-1 h-full w-screen bg-primary"></div>
@@ -76,24 +87,24 @@ import Button from "@/components/Button.astro";
       <Image
         src={heroCircleSm}
         alt="Círculo pequeño de un degradado de naranja a morado"
-        class="relative bottom-1/3 col-start-1 row-start-1 max-h-max max-w-max xl:bottom-1/4 xl:left-3/4"
+        class="bounceSlow relative bottom-1/3 z-20 col-start-1 row-start-1 max-h-max max-w-max xl:bottom-1/4 xl:left-3/4"
       />
       <Image
         src={heroCircleLg}
         alt="Círculo grande de un degradado de naranja a morado"
-        class="relative bottom-3/4 col-start-2 row-start-1 max-h-max max-w-max xl:bottom-1/2 xl:left-full"
+        class="bounceSlow relative bottom-3/4 col-start-2 row-start-1 max-h-max max-w-max xl:bottom-1/2 xl:left-full"
       />
 
       <Image
         src={heroCircleMd}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="relative col-start-2 row-start-1 max-h-max max-w-max drop-shadow-lg xl:left-full"
+        class="bounceSlow relative col-start-2 row-start-1 max-h-max max-w-max drop-shadow-lg xl:left-full"
       />
 
       <Image
         src={heroCircleMd}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="relative col-start-2 row-start-1 max-h-max max-w-max self-end justify-self-end"
+        class="bounceSlow relative col-start-2 row-start-1 max-h-max max-w-max self-end justify-self-end"
       />
     </div>
     <h1
