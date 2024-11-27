@@ -19,7 +19,7 @@ import Button from "@/components/Button.astro";
       htmlElement.addEventListener("mouseenter", (e) => {
         clearTimeout(animationTimeout); // Avoids popping if the cursor instantly re-enter to the element
 
-        htmlElement.style.transition = "transform 0.5s ease-out";
+        htmlElement.style.transition = "transform 0.4s ease-in-out";
 
         htmlElement.style.animationPlayState = "paused";
 
@@ -124,7 +124,7 @@ import Button from "@/components/Button.astro";
       class="slideTop-css animation-delay-2 col-start-1 row-start-4 flex items-center justify-start gap-2 self-start md:gap-6 xl:gap-12"
     >
       <Button text="Agenda" type="primary" href="/#talks" />
-      <Button text="Conocer más" type="link" href="/#volunteer" />
+      <Button text="Únete a la comunidad" type="link" href="/#volunteer" />
     </div>
   </div>
 </section>
