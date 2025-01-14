@@ -2,9 +2,7 @@
 // Astro Component
 import { Image } from "astro:assets";
 
-import heroCircleLg from "@/assets/hero_circle_lg.svg";
-import heroCircleMd from "@/assets/hero_circle_md.svg";
-import heroCircleSm from "@/assets/hero_circle_sm.svg";
+import heroCircle from "@/assets/hero_circle.svg";
 
 // Components
 import Button from "@/components/Button.astro";
@@ -65,19 +63,19 @@ import Button from "@/components/Button.astro";
       class="col-start-2 row-span-3 row-start-1 hidden grid-cols-2 grid-rows-none md:grid"
     >
       <Image
-        src={heroCircleLg}
+        src={heroCircle}
         alt="Círculo grande de un degradado de naranja a morado"
-        class="bounceSlow relative bottom-1/3 z-10 col-start-2 row-start-1 max-h-max max-w-max xl:bottom-0"
+        class="bounceSlow relative bottom-1/3 z-10 col-start-2 row-start-1 max-h-max max-w-72 xl:bottom-0"
       />
       <Image
-        src={heroCircleMd}
+        src={heroCircle}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="bounceSlow relative top-1/4 z-20 col-start-2 row-start-1 max-h-max max-w-max xl:left-full"
+        class="bounceSlow relative top-1/4 z-20 col-start-2 row-start-1 max-h-max max-w-40 xl:left-full"
       />
       <Image
-        src={heroCircleSm}
+        src={heroCircle}
         alt="Círculo pequeño de un degradado de naranja a morado"
-        class="bounceSlow relative left-16 top-8 z-30 col-start-2 row-start-1 max-h-max max-w-max xl:left-3/4 xl:top-20 xl:justify-self-end"
+        class="bounceSlow relative left-16 top-8 z-30 col-start-2 row-start-1 max-h-max max-w-16 xl:left-3/4 xl:top-20 xl:justify-self-end"
       />
       <div class="col-start-1 row-start-1 h-2/3 w-full bg-primary"></div>
       <div class="col-start-2 row-start-1 h-full w-screen bg-primary"></div>
@@ -85,26 +83,26 @@ import Button from "@/components/Button.astro";
 
     <div class="hidden grid-cols-2 grid-rows-none lg:grid">
       <Image
-        src={heroCircleSm}
+        src={heroCircle}
         alt="Círculo pequeño de un degradado de naranja a morado"
-        class="bounceSlow relative bottom-1/3 z-20 col-start-1 row-start-1 max-h-max max-w-max xl:bottom-1/4 xl:left-3/4"
+        class="bounceSlow relative bottom-1/3 z-20 col-start-1 row-start-1 max-h-max max-w-16 xl:bottom-1/4 xl:left-3/4"
       />
       <Image
-        src={heroCircleLg}
+        src={heroCircle}
         alt="Círculo grande de un degradado de naranja a morado"
-        class="bounceSlow relative bottom-3/4 col-start-2 row-start-1 max-h-max max-w-max xl:bottom-1/2 xl:left-full"
+        class="bounceSlow relative bottom-3/4 col-start-2 row-start-1 max-h-max max-w-72 xl:bottom-1/2 xl:left-full"
       />
 
       <Image
-        src={heroCircleMd}
+        src={heroCircle}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="bounceSlow relative col-start-2 row-start-1 max-h-max max-w-max drop-shadow-lg xl:left-full"
+        class="bounceSlow relative col-start-2 row-start-1 max-h-max max-w-40 drop-shadow-lg xl:left-full"
       />
 
       <Image
-        src={heroCircleMd}
+        src={heroCircle}
         alt="Círculo mediano de un degradado de naranja a morado"
-        class="bounceSlow relative col-start-2 row-start-1 max-h-max max-w-max self-end justify-self-end"
+        class="bounceSlow relative col-start-2 row-start-1 max-h-max max-w-40 self-end justify-self-end"
       />
     </div>
     <h1

@@ -22,22 +22,28 @@ const talkList = await getTalkEntries();
     <span class="divider growRight mx-auto my-1 bg-primary md:max-w-sm"></span>
     Charlas
   </h2>
-  <div class="talks__container">
-    {
-      talkList.map((talk) => (
-        <TalkCard
-          title={talk.title}
-          description={talk.description}
-          date={talk.date}
-          location={talk.location}
-          signUpURL={talk.signUpUrl}
-          thumbnail={talk.thumbnail}
-          color={talk.color}
-          ctaDisabled={talk.ctaDisabled}
-        />
-      ))
-    }
-  </div>
+  {
+    talkList.length === 0 ? (
+      <p class="text-center text-lg">
+        ¡Estamos trabajando para traerte más eventos!
+      </p>
+    ) : (
+      <div class="talks__container">
+        {talkList.map((talk) => (
+          <TalkCard
+            title={talk.title}
+            description={talk.description}
+            date={talk.date}
+            location={talk.location}
+            signUpURL={talk.signUpUrl}
+            thumbnail={talk.thumbnail}
+            color={talk.color}
+            ctaDisabled={talk.ctaDisabled}
+          />
+        ))}
+      </div>
+    )
+  }
 </section>
 
 <style>

@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 import Button from "@/components/Button.astro";
 
 // Assets
-import duetonePhoto from "@/assets/duetone_photo.jpg";
+import teamPhoto from "@/assets/team_photo.webp";
 ---
 
 <script>
@@ -20,8 +20,8 @@ import duetonePhoto from "@/assets/duetone_photo.jpg";
   <div class="content-layout gap-24 xl:flex">
     <div class="mb-6">
       <div class="items-center justify-center md:flex">
-        <h2 class="text-header volunteer__header slideRight">
-          ¿Tienes una idea que<br />quieras compartir?
+        <h2 class="text-header volunteer__header slideRight mb-4 md:mb-0">
+          ¿Tienes una idea que quieras compartir?
         </h2>
         <span class="divider growRight bg-secondary"></span>
       </div>
@@ -43,8 +43,8 @@ import duetonePhoto from "@/assets/duetone_photo.jpg";
       />
     </div>
     <Image
-      class="max-h-fit"
-      src={duetonePhoto}
+      class="max-h-fit w-max xl:w-1/2"
+      src={teamPhoto}
       alt="Un grupo de tres personas, sentadas en una mesa mientras trabajan y comparten ideas."
     />
   </div>
@@ -58,6 +58,7 @@ import duetonePhoto from "@/assets/duetone_photo.jpg";
   }
 
   .volunteer__header {
+    flex-basis: 115%;
     color: var(--secondary-color);
     text-align: left;
     width: 100%;
