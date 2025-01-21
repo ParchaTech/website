@@ -1,6 +1,24 @@
+---
+// Astro Components
+import { Image } from "astro:assets";
+
+// Contentful
+import { getAsset } from "@/lib/contentful";
+
+// Contentful IDs
+import { LOGO_ID } from "@/lib/constants";
+
+const logo = await getAsset(LOGO_ID);
+---
+
 <header class="header">
   <div class="header-layout">
-    <h2 class="header_logo slideBottom-css">ParchaTech</h2>
+    <Image
+      src={logo}
+      inferSize
+      alt="ParchaTech Logo"
+      class="relative z-10 w-20 pb-20 pt-12"
+    />
   </div>
 </header>
 
@@ -13,27 +31,5 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 16px;
-  }
-
-  .header_logo {
-    padding: 42px 0px 48px;
-    /* font-size: 32px; */
-    font-size: 24px;
-    font-weight: normal;
-    font-family: var(--secondary-font);
-    color: var(--secondary-color);
-  }
-
-  @media (min-width: 1024px) {
-    .header-layout {
-      padding: 0 64px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .header_logo {
-      font-size: 32px;
-    }
   }
 </style>

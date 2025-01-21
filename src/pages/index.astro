@@ -3,20 +3,19 @@
 import Layout from "@/layouts/Layout.astro";
 
 // Index Sections
-import Hero from "@/components/index/Hero.astro";
-import Talks from "@/components/index/Talks.astro";
-import Speakers from "@/components/index/Speakers.astro";
-import Volunteer from "@/components/index/Volunteer.astro";
+import Hero from "@/components/home/Hero.astro";
+import Talks from "@/components/home/Talks.astro";
+import Speakers from "@/components/home/Speakers.astro";
+import Volunteer from "@/components/home/Volunteer.astro";
+import CursorFollower from "@/components/CursorFollower.astro";
 ---
 
 <Layout title="ParchaTech">
+  <CursorFollower />
   <main class="overflow-x-clip">
     <Hero />
-
     <Talks />
-
     <Speakers />
-
     <Volunteer />
   </main>
 </Layout>

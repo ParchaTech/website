@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 
 // Assets
 import arrow from "@/assets/arrow-up.png";
-import footerImage from "@/assets/curve_text.png";
+import footerImage from "@/assets/curve_text.svg";
 import instagramIcon from "@/assets/instagram_icon.svg";
 import wppIcon from "@/assets/wpp_icon.svg";
 import linkedinIcon from "@/assets/linkedin_icon.svg";
@@ -12,7 +12,10 @@ import linkedinIcon from "@/assets/linkedin_icon.svg";
 
 <script>
   import { addAnimationObserver } from "@/lib/observer.ts";
-  addAnimationObserver("footer .divider", "play", 0.3);
+  import { rotate } from "@/lib/animations.ts";
+
+  rotate("footer > a > .content-layout > div > img");
+  addAnimationObserver("footer .divider", "play", 0.2);
 </script>
 <footer class="w-full px-4">
   <a href="#talks" class="mb-4 w-full">
@@ -22,9 +25,9 @@ import linkedinIcon from "@/assets/linkedin_icon.svg";
       <div class="flex w-full items-center justify-center gap-8">
         <div class="divider growLeft max-w-20 bg-secondary"></div>
         <Image
-          class="rotate w-1/2 max-w-40 md:w-full"
+          class="w-1/2 max-w-40 md:w-full"
           src={footerImage}
-          alt="Las palabras ParchaTech y 2024 formando un círculo"
+          alt="Las palabras ParchaTech y 2025 formando un círculo"
         />
         <div class="divider growRight max-w-20 bg-secondary"></div>
       </div>

@@ -3,9 +3,4 @@
 @import url(core/typography.css);
 @import url(core/decoration.css);
 @import url(core/animations.css);
-
-.content-layout {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-}
+@import url(core/layout.css);

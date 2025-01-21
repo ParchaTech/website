@@ -126,3 +126,20 @@ export const getFrequentSpeakers = async () => {
 
   return frequentSpeakerList;
 };
+
+export const getAssets = async (matchString: string) => {
+  const assets = await contentfulClient.getAssets({
+    "fields.title[match]": matchString,
+    order: ["fields.file.fileName"],
+  });
+
+  return assets.items.map((item) => {
+    return getAssetURL(item);
+  });
+};
+
+export const getAsset = async (assetId: string) => {
+  const asset = await contentfulClient.getAsset(assetId);
+
+  return getAssetURL(asset);
+};

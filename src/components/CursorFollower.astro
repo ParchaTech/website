@@ -1,0 +1,61 @@
+---
+import { Image } from "astro:assets";
+
+// Assets
+import footerImage from "@/assets/curve_text.svg";
+---
+
+<script>
+  import gsap from "gsap";
+
+  const isMobileDevice = window.ontouchstart !== undefined;
+
+  const createCursorFollower = () => {
+    const htmlElement = document.querySelector(".cursor-follower");
+    console.log(htmlElement);
+
+    window.addEventListener("mousemove", (e) => {
+      const { x, y } = e;
+
+      gsap.to(htmlElement, {
+        x: x - 40,
+        y: y - 40,
+        duration: 0.2,
+        ease: "power4",
+      });
+    });
+
+    document.addEventListener("mouseenter", () => {
+      gsap.to(htmlElement, { opacity: 1, duration: 0.5 });
+    });
+
+    document.addEventListener("mouseleave", () => {
+      gsap.to(htmlElement, { opacity: 0, duration: 0.5 });
+    });
+  };
+
+  if (!isMobileDevice) {
+    createCursorFollower();
+  }
+</script>
+<div class="cursor-follower">
+  <Image
+    class="rotate w-1/2 max-w-40 md:w-full"
+    src={footerImage}
+    alt="Las palabras ParchaTech y 2025 formando un círculo"
+  />
+</div>
+<style>
+  .cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    opacity: 0;
+    z-index: 10000;
+    user-select: none;
+    pointer-events: none;
+  }
+</style>
