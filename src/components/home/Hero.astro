@@ -59,9 +59,9 @@ const leftGridAssets = await getAssets("left grid");
     />
   </div>
   <div
-    class="absolute left-0 top-0 flex h-full w-full items-center justify-between gap-6 overflow-hidden px-4"
+    class="absolute left-0 flex w-full items-center justify-between gap-6 overflow-hidden px-4 lg:top-0 lg:h-full"
   >
-    <div class="hero__grid-left flex w-1/2 justify-end gap-6">
+    <div class="hero__grid-left flex h-full w-1/2 justify-end gap-6">
       <Image
         src={leftGridAssets[0]}
         inferSize
@@ -83,7 +83,7 @@ const leftGridAssets = await getAssets("left grid");
         alt="White grid in the background"
       />
     </div>
-    <div class="hero__grid-right flex w-1/2 justify-start gap-6">
+    <div class="hero__grid-right flex h-full w-1/2 justify-start gap-6">
       <Image
         src={rightGridAssets[0]}
         inferSize
