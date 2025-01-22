@@ -13,7 +13,7 @@ const { text, type, href, backgroundColor, disabled, externalLink } =
 
 const buttonClasses = {
   primary: "bg-primary text-secondary",
-  secondary: "bg-secondary text-primary",
+  secondary: "bg-orange text-primary",
   link: "btn--link",
   "full-width": "btn--full-width",
 };
@@ -21,7 +21,7 @@ const buttonClasses = {
 
 <a
   class:list={[
-    "btn w-1/2 md:w-full",
+    "btn w-full",
     buttonClasses[type],
     { "pointer-events-none cursor-default": disabled },
   ]}

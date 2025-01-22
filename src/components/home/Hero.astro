@@ -8,191 +8,117 @@ import Button from "@/components/Button.astro";
 // Contentful
 import { getAssets } from "@/lib/contentful";
 
+import bgSphere from "@/assets/bg_sphere.svg";
+
 const rightGridAssets = await getAssets("right grid");
 const leftGridAssets = await getAssets("left grid");
 ---
 
 <script>
-  import gsap from "gsap";
-  import SplitType from "split-type";
+  import createHeroAnimations from "@/lib/animations/hero";
 
-  const calculateXPosition = (
-    parentSelector: string,
-    direction: number,
-    offset: number,
-  ) => {
-    const parentElement = document.querySelector(parentSelector) as HTMLElement;
-    const width = parentElement.offsetWidth - offset;
-    return (width / 2) * direction;
-  };
-
-  const backgroundTimeline = () => {
-    const timeline = gsap.timeline({
-      defaults: {
-        autoAlpha: 0.2,
-        duration: 1,
-        ease: "back.Out",
-      },
-    });
-
-    timeline.fromTo(
-      ".hero-left-grid > img",
-      { autoAlpha: 0 },
-      {
-        x: calculateXPosition(".hero-left-grid", 1, 32),
-        stagger: {
-          amount: 2,
-          from: "end",
-        },
-      },
-    );
-
-    timeline.fromTo(
-      ".hero-right-grid > img",
-      { autoAlpha: 0 },
-      {
-        x: calculateXPosition(".hero-left-grid", -1, 32),
-        stagger: {
-          amount: 2,
-          from: "start",
-        },
-      },
-      "<",
-    );
-
-    return timeline;
-  };
-
-  const textTimeline = () => {
-    new SplitType(".hero__header");
-    const timeline = gsap.timeline();
-
-    timeline.from(".hero__header .char", {
-      duration: 1.5,
-      opacity: 0,
-      scale: 0,
-      y: 80,
-      rotationX: 180,
-      transformOrigin: "0% 50% -50",
-      ease: "back",
-      stagger: 0.05,
-      delay: 0.8,
-    });
-
-    timeline.from(
-      ".hero__description",
-      {
-        autoAlpha: 0,
-        y: -100,
-        duration: 0.8,
-        ease: "back",
-      },
-      "<1.2",
-    );
-
-    return timeline;
-  };
-
-  const buttonTimeline = () => {
-    const timeline = gsap.timeline();
-
-    timeline.from("#hero > .content-layout > div > div > div", {
-      autoAlpha: 0,
-      y: 100,
-      duration: 1.5,
-      ease: "back",
-    });
-
-    return timeline;
-  };
-
-  const master = gsap.timeline();
-  master.add(backgroundTimeline());
-  master.add(textTimeline(), "<0.1");
-  master.add(buttonTimeline(), ">-1.5");
-  master.from(
-    ".header-layout > img",
-    {
-      autoAlpha: 0,
-      duration: 1.5,
-      ease: "back.Out",
-    },
-    "<0.5",
-  );
+  createHeroAnimations();
 </script>
-<section id="hero">
+<section id="hero" class="px-4 lg:px-16 lg:pt-16">
+  <div class="hero__sphere-container absolute left-0 z-10 h-full w-full">
+    <Image
+      src={bgSphere}
+      alt="Floating sphere in the background"
+      class="relative left-2/4 top-[-120px] w-8 lg:left-1/3"
+    />
+    <Image
+      src={bgSphere}
+      alt="Floating sphere in the background"
+      class="relative left-[-30px] top-[-50px] w-20 md:left-[-40px] md:w-32 lg:left-12"
+    />
+    <Image
+      src={bgSphere}
+      alt="Floating sphere in the background"
+      class="relative left-2/4 top-[-55px] w-32 md:top-0 md:w-48 lg:left-1/2 lg:w-52"
+    />
+    <Image
+      src={bgSphere}
+      alt="Floating sphere in the background"
+      class="relative left-12 top-1/4 w-16 lg:left-36 lg:top-10"
+    />
+    <Image
+      src={bgSphere}
+      alt="Floating sphere in the background"
+      class="relative left-3/4 top-8 w-8"
+    />
+    <Image
+      src={bgSphere}
+      alt="Floating sphere in the background"
+      class="relative left-1/2 top-1/4 w-24 md:top-0"
+    />
+
+    <Image
+      src={bgSphere}
+      alt="Floating sphere in the background"
+      class="relative bottom-1/2 left-3/4 top-[-700px] hidden w-40 lg:block"
+    />
+  </div>
   <div
-    class="absolute top-0 flex h-full w-full items-center justify-between gap-8"
+    class="absolute left-0 top-0 flex h-full w-full items-center justify-between gap-6 overflow-hidden px-4"
   >
-    <div class="hero-left-grid flex w-1/2 gap-8">
+    <div class="hero__grid-left flex w-1/2 justify-end gap-6">
       <Image
         src={leftGridAssets[0]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
       <Image
         src={leftGridAssets[1]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
       <Image
         src={leftGridAssets[2]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
       <Image
         src={leftGridAssets[3]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
     </div>
-    <div class="hero-right-grid flex w-1/2 justify-end gap-8">
+    <div class="hero__grid-right flex w-1/2 justify-start gap-6">
       <Image
         src={rightGridAssets[0]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
       <Image
         src={rightGridAssets[1]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
       <Image
         src={rightGridAssets[2]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
       <Image
         src={rightGridAssets[3]}
         inferSize
         alt="White grid in the background"
-        class="opacity-0"
       />
     </div>
   </div>
   <div class="content-layout relative z-10">
     <div class="flex w-full items-center justify-center">
       <div class="w-full">
-        <h1 class="hero__header text-8xl text-secondary">
-          <span class="block text-[150px] leading-none"
-            >Tecnología y
-            <br />
-            amigos</span
-          >
-          <span class="block">en un mismo lugar</span>
+        <h1 class="hero__header text-4xl text-secondary md:text-6xl">
+          <span class="text-6xl leading-none md:text-[150px] lg:max-w-3xl"
+            >Tecnología y amigos
+          </span><span>en un mismo lugar</span>
         </h1>
-        <p class="hero__description mt-8 w-1/2 text-secondary">
+        <p class="hero__description my-8 text-secondary">
           ParchaTech es una comunidad que brinda charlas enfocadas en el
           crecimiento personal y profesional, dentro del mundo de la tecnología.
         </p>
-        <div class="mt-10 flex w-full items-center gap-10">
+        <div class="flex w-full flex-wrap items-center gap-4 md:gap-8">
           <Button text="Agenda" type="secondary" href="/#talks" />
           <Button text="Únete a la comunidad" type="link" href="/#volunteer" />
         </div>
@@ -216,6 +142,10 @@ const leftGridAssets = await getAssets("left grid");
 
   .hero__description {
     max-width: 550px;
-    color: var(--secondary-color);
+  }
+
+  .hero__grid-left > img,
+  .hero__grid-right > img {
+    opacity: 0;
   }
 </style>
