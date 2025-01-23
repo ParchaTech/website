@@ -20,7 +20,7 @@ const leftGridAssets = await getAssets("left grid");
   createHeroAnimations();
 </script>
 <section id="hero" class="px-4 lg:px-16 lg:pt-16">
-  <div class="hero__sphere-container absolute left-0 z-10 h-full w-full">
+  <div class="hero__sphere-container absolute left-0 z-10 w-full lg:h-full">
     <Image
       src={bgSphere}
       alt="Floating sphere in the background"
@@ -49,7 +49,7 @@ const leftGridAssets = await getAssets("left grid");
     <Image
       src={bgSphere}
       alt="Floating sphere in the background"
-      class="relative left-1/2 top-1/4 w-24 md:top-0"
+      class="relative bottom-[-100px] left-1/2 w-24 md:top-0"
     />
 
     <Image

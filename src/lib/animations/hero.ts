@@ -38,6 +38,20 @@ const backgroundTimeline = () => {
   return timeline;
 };
 
+const spheresTimeline = () => {
+  const timeline = gsap.timeline();
+
+  timeline.from(".hero__sphere-container > img", {
+    autoAlpha: 0,
+    y: -100,
+    duration: 1.5,
+    ease: "back.out",
+    stagger: 0.1,
+  });
+
+  return timeline;
+};
+
 const textTimeline = () => {
   new SplitType(".hero__header");
 
@@ -83,25 +97,10 @@ const buttonTimeline = () => {
   return timeline;
 };
 
-const createHeroAnimations = () => {
-  const master = gsap.timeline();
+const logoTimeline = () => {
+  const timeline = gsap.timeline();
 
-  master.add(backgroundTimeline());
-
-  // Animate the spheres in the background
-  master.from(".hero__sphere-container > img", {
-    autoAlpha: 0,
-    y: -100,
-    duration: 1.5,
-    ease: "back.out",
-    stagger: 0.1,
-  });
-
-  master.add(textTimeline(), "<-1");
-  master.add(buttonTimeline(), ">-1.5");
-
-  // Animate the header logo
-  master.from(
+  timeline.from(
     ".header-layout > img",
     {
       autoAlpha: 0,
@@ -110,6 +109,18 @@ const createHeroAnimations = () => {
     },
     "<0.5",
   );
+
+  return timeline;
+};
+
+const createHeroAnimations = () => {
+  const master = gsap.timeline();
+
+  master.add(backgroundTimeline());
+  master.add(spheresTimeline(), ">-0.8");
+  master.add(textTimeline(), "<-1");
+  master.add(buttonTimeline(), ">-1.5");
+  master.add(logoTimeline(), ">-1.5");
 };
 
 export default createHeroAnimations;
