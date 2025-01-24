@@ -1,0 +1,30 @@
+---
+import Button from "@/components/Button.astro";
+---
+
+<div
+  class="empty-card mt-12 flex w-full flex-col items-center justify-center gap-8 p-8 text-center"
+>
+  <h3 class="text-title">¿Buscas aprender algo nuevo?</h3>
+  <p>
+    Síguenos en nuestras redes sociales para estar al tanto de los próximos
+    eventos.
+  </p>
+  <Button
+    type="secondary"
+    href="https://www.instagram.com/ParchaTech"
+    text="Conoce más"
+    externalLink
+  />
+</div>
+
+<style>
+  .empty-card {
+    height: 400px;
+    max-width: 360px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%23C4C4C4FF' stroke-width='4' stroke-dasharray='34%2c 10%2c 14' stroke-dashoffset='31' stroke-linecap='round'/%3e%3c/svg%3e");
+    border-radius: 8px;
+  }
+</style>

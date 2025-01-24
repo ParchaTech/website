@@ -4,29 +4,46 @@ import { getTalkEntries } from "@/lib/contentful";
 
 // Components
 import TalkCard from "@/components/TalkCard.astro";
+import EmptyTalkCard from "@/components/EmptyTalkCard.astro";
 
 const talkList = await getTalkEntries();
 ---
 
 <script>
-  import { addAnimationObserver } from "@/lib/observer.ts";
+  import gsap from "gsap";
 
-  addAnimationObserver(".talks__header .divider", "play", 0.4);
-  addAnimationObserver(".talks__header", "play", 0.4);
+  gsap.to(".talks__slider > h2 > span", {
+    xPercent: -100,
+    duration: 4,
+    ease: "none",
+    repeat: -1,
+  });
+
+  gsap.from("#talks > p", {
+    autoAlpha: 0,
+    y: 50,
+    ease: "back.out",
+    duration: 1,
+  });
 </script>
 
 <section id="talks">
-  <div class="bg__grid-overlay-radial top-0"></div>
-  <h2 class="text-header talks__header slideTop">
-    Próximas<br />
-    <span class="divider growRight mx-auto my-1 bg-primary md:max-w-sm"></span>
-    Charlas
-  </h2>
+  <div class="talks__slider relative border-y border-current pb-8 pt-10">
+    <h2 class="flex w-full items-center justify-between">
+      {
+        Array.from({ length: 8 }).map((_, index) => (
+          <span
+            class={`text-header block min-w-96 ${index % 2 === 0 ? "" : "outlined-text"}`}
+          >
+            Próximos Eventos
+          </span>
+        ))
+      }
+    </h2>
+  </div>
   {
     talkList.length === 0 ? (
-      <p class="text-center text-lg">
-        ¡Estamos trabajando para traerte más eventos!
-      </p>
+      <EmptyTalkCard />
     ) : (
       <div class="talks__container">
         {talkList.map((talk) => (
@@ -52,9 +69,22 @@ const talkList = await getTalkEntries();
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     padding: 100px 16px;
+    height: 100vh;
+  }
+
+  .talks__slider > h2 > span {
+    font-size: 3.5rem;
+  }
+
+  .outlined-text {
+    color: var(--primary-color);
+    -webkit-text-fill-color: var(
+      --secondary-color
+    ); /* Will override color (regardless of order) */
+    -webkit-text-stroke: 1px var(--primary-color);
   }
 
   .talks__header {
