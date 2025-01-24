@@ -11,6 +11,9 @@ const talkList = await getTalkEntries();
 
 <script>
   import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
 
   gsap.to(".talks__slider > h2 > span", {
     xPercent: -100,
@@ -19,11 +22,13 @@ const talkList = await getTalkEntries();
     repeat: -1,
   });
 
-  gsap.from("#talks > p", {
+  gsap.from(".talks__container", {
     autoAlpha: 0,
     y: 50,
     ease: "back.out",
-    duration: 1,
+    duration: 2,
+    scrollTrigger: ".talks__container",
+    top: "top bottom",
   });
 </script>
 
@@ -41,12 +46,12 @@ const talkList = await getTalkEntries();
       }
     </h2>
   </div>
-  {
-    talkList.length === 0 ? (
-      <EmptyTalkCard />
-    ) : (
-      <div class="talks__container">
-        {talkList.map((talk) => (
+  <div class="talks__container">
+    {
+      talkList.length === 0 ? (
+        <EmptyTalkCard />
+      ) : (
+        talkList.map((talk) => (
           <TalkCard
             title={talk.title}
             description={talk.description}
@@ -57,16 +62,14 @@ const talkList = await getTalkEntries();
             color={talk.color}
             ctaDisabled={talk.ctaDisabled}
           />
-        ))}
-      </div>
-    )
-  }
+        ))
+      )
+    }
+  </div>
 </section>
 
 <style>
   #talks {
-    z-index: 10;
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: start;
