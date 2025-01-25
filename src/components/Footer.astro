@@ -14,7 +14,9 @@ const icons = await getAssets(ICONS_ID);
 const curveText = await getAsset(PARCHATECH_CURVE_TEXT_ID);
 const arrowUp = await getAsset(ARROW_UP_ICON_ID);
 
-const [_, instagramIcon, linkedinIcon, wppIcon] = icons;
+const igIcon = icons.find((icon) => icon.match("instagram")) || "";
+const linkedinIcon = icons.find((icon) => icon.match("linkedin")) || "";
+const wppIcon = icons.find((icon) => icon.match("wpp")) || "";
 ---
 
 <script>
@@ -52,19 +54,19 @@ const [_, instagramIcon, linkedinIcon, wppIcon] = icons;
       href="https://www.instagram.com/parchatech/"
       target="_blank"
       class="onHover"
-      ><Image inferSize src={instagramIcon} alt="Logo de Instagram" /></a
-    >
-    <a
-      href="https://chat.whatsapp.com/FFI7K3KVypB4OVm5CcRmQB"
-      target="_blank"
-      class="onHover"
-      ><Image inferSize src={wppIcon} alt="Logo de Whatsapp" /></a
+      ><Image inferSize src={igIcon} alt="Logo de Instagram" /></a
     >
     <a
       href="https://www.linkedin.com/company/parchatech"
       target="_blank"
       class="onHover"
       ><Image inferSize src={linkedinIcon} alt="Logo de LinkedIn" /></a
+    >
+    <a
+      href="https://chat.whatsapp.com/FFI7K3KVypB4OVm5CcRmQB"
+      target="_blank"
+      class="onHover"
+      ><Image inferSize src={wppIcon} alt="Logo de Whatsapp" /></a
     >
   </div>
 </footer>
