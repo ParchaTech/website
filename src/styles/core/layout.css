@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+}
+
 .content-layout {
   width: 100%;
   max-width: 1440px;

@@ -3,7 +3,7 @@
 import { Image } from "astro:assets";
 
 // Contentful Query
-import { getFrequentSpeakers } from "@/lib/contentful";
+import { getFrequentSpeakers } from "@/lib/contentful/queries";
 
 const frequentSpeakers = await getFrequentSpeakers();
 ---
@@ -16,7 +16,7 @@ const frequentSpeakers = await getFrequentSpeakers();
   addAnimationObserver(".overlay", "move", 0.4);
 </script>
 
-<section id="speakers">
+<section id="speakers" class="pt-32 lg:pt-10">
   <h2 class="text-header speakers__header slideTop w-full">
     <span class="divider growLeft max-w-[10%] bg-primary"></span>
     Speakers
@@ -59,7 +59,6 @@ const frequentSpeakers = await getFrequentSpeakers();
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
   }
 
   .speakers__header {

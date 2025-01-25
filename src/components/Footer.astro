@@ -12,7 +12,7 @@ import linkedinIcon from "@/assets/linkedin_icon.svg";
 
 <script>
   import { addAnimationObserver } from "@/lib/observer.ts";
-  import { rotate } from "@/lib/animations/core.ts";
+  import { rotate } from "@/lib/gsap/core.ts";
 
   rotate("footer > a > .content-layout > div > img");
   addAnimationObserver("footer .divider", "play", 0.2);
@@ -62,7 +62,6 @@ import linkedinIcon from "@/assets/linkedin_icon.svg";
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 42px 0;
     background-color: var(--primary-color);
     color: var(--secondary-color);
   }

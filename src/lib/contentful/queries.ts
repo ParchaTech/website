@@ -1,46 +1,6 @@
-import {
-  createClient,
-  type EntryFieldTypes,
-  type Asset,
-  type UnresolvedLink,
-} from "contentful";
-
-/* Content Types */
-export interface Speaker {
-  contentTypeId: "speaker";
-  fields: {
-    name: EntryFieldTypes.Text;
-    jobPosition: EntryFieldTypes.Text;
-    photo: EntryFieldTypes.AssetLink;
-    companyLogo: EntryFieldTypes.AssetLink;
-    frequentSpeaker: EntryFieldTypes.Boolean;
-  };
-}
-
-export interface Talk {
-  contentTypeId: "talk";
-  fields: {
-    slug: EntryFieldTypes.Text;
-    title: EntryFieldTypes.Text;
-    description: EntryFieldTypes.Text;
-    date: EntryFieldTypes.Date;
-    location: EntryFieldTypes.Text;
-    signUpUrl: EntryFieldTypes.Text;
-    thumbnail: EntryFieldTypes.AssetLink;
-    color: EntryFieldTypes.Text;
-    ctaDisabled: EntryFieldTypes.Boolean;
-    speaker: EntryFieldTypes.EntryLink<Speaker>;
-  };
-}
-
-/* Contentful client connection */
-const contentfulClient = createClient({
-  space: import.meta.env.CONTENTFUL_SPACE_ID,
-  accessToken: import.meta.env.DEV
-    ? import.meta.env.CONTENTFUL_PREVIEW_TOKEN
-    : import.meta.env.CONTENTFUL_DELIVERY_TOKEN,
-  host: import.meta.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
-});
+import { contentfulClient } from "@/lib/contentful/connection";
+import { type Talk, type Speaker } from "@/lib/contentful/connection";
+import { type Asset, type UnresolvedLink } from "contentful";
 
 const getAssetURL = (
   unresolvedAsset: UnresolvedLink<"Asset"> | Asset<undefined, string>,
@@ -54,7 +14,6 @@ const getAssetURL = (
   return "";
 };
 
-/* Queries */
 export const getTalkEntries = async () => {
   const today = new Date().toISOString();
 

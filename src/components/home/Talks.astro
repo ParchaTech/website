@@ -1,6 +1,6 @@
 ---
 // Content query
-import { getTalkEntries } from "@/lib/contentful";
+import { getTalkEntries } from "@/lib/contentful/queries";
 
 // Components
 import TalkCard from "@/components/TalkCard.astro";
@@ -10,30 +10,13 @@ const talkList = await getTalkEntries();
 ---
 
 <script>
-  import gsap from "gsap";
-  import ScrollTrigger from "gsap/ScrollTrigger";
+  import createTalksAnimation from "@/lib/gsap/talks.ts";
 
-  gsap.registerPlugin(ScrollTrigger);
-
-  gsap.to(".talks__slider > h2 > span", {
-    xPercent: -100,
-    duration: 4,
-    ease: "none",
-    repeat: -1,
-  });
-
-  gsap.from(".talks__container", {
-    autoAlpha: 0,
-    y: 50,
-    ease: "back.out",
-    duration: 2,
-    scrollTrigger: ".talks__container",
-    top: "top bottom",
-  });
+  createTalksAnimation();
 </script>
 
-<section id="talks">
-  <div class="talks__slider relative border-y border-current pb-8 pt-10">
+<section id="talks" class="px-4 py-20 xl:h-screen">
+  <div class="talks__slider border-y border-current pb-8 pt-10">
     <h2 class="flex w-full items-center justify-between">
       {
         Array.from({ length: 8 }).map((_, index) => (
@@ -46,7 +29,7 @@ const talkList = await getTalkEntries();
       }
     </h2>
   </div>
-  <div class="talks__container">
+  <div class="talks__container mt-16">
     {
       talkList.length === 0 ? (
         <EmptyTalkCard />
@@ -74,8 +57,6 @@ const talkList = await getTalkEntries();
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    padding: 100px 16px;
-    height: 100vh;
   }
 
   .talks__slider > h2 > span {
@@ -90,25 +71,11 @@ const talkList = await getTalkEntries();
     -webkit-text-stroke: 1px var(--primary-color);
   }
 
-  .talks__header {
-    margin-bottom: 100px;
-    width: 100%;
-  }
-
   .talks__container {
     display: flex;
     justify-content: center;
     align-items: stretch;
     flex-wrap: wrap;
     gap: 24px;
-  }
-
-  .talks__header-divider {
-    display: block;
-    text-align: center;
-    width: 30%;
-    height: 2px;
-    background-color: var(--primary-color);
-    margin: 4px auto;
   }
 </style>

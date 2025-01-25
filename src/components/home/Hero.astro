@@ -6,7 +6,7 @@ import { Image } from "astro:assets";
 import Button from "@/components/Button.astro";
 
 // Contentful
-import { getAssets } from "@/lib/contentful";
+import { getAssets } from "@/lib/contentful/queries";
 
 import bgSphere from "@/assets/bg_sphere.svg";
 
@@ -15,7 +15,7 @@ const leftGridAssets = await getAssets("left grid");
 ---
 
 <script>
-  import createHeroAnimations from "@/lib/animations/hero";
+  import createHeroAnimations from "@/lib/gsap/hero.ts";
 
   createHeroAnimations();
 </script>
@@ -130,7 +130,7 @@ const leftGridAssets = await getAssets("left grid");
 <style>
   #hero {
     background-color: var(--primary-color);
-    height: 100vh;
+    height: 815px;
   }
 
   .hero__header {
