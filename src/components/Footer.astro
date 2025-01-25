@@ -2,12 +2,19 @@
 // Astro components
 import { Image } from "astro:assets";
 
-// Assets
-import arrow from "@/assets/arrow-up.png";
-import footerImage from "@/assets/curve_text.svg";
-import instagramIcon from "@/assets/instagram_icon.svg";
-import wppIcon from "@/assets/wpp_icon.svg";
-import linkedinIcon from "@/assets/linkedin_icon.svg";
+// Contentful
+import { getAsset, getAssets } from "@/lib/contentful/queries";
+import {
+  ICONS_ID,
+  ARROW_UP_ICON_ID,
+  PARCHATECH_CURVE_TEXT_ID,
+} from "@/lib/constants";
+
+const icons = await getAssets(ICONS_ID);
+const curveText = await getAsset(PARCHATECH_CURVE_TEXT_ID);
+const arrowUp = await getAsset(ARROW_UP_ICON_ID);
+
+const [_, instagramIcon, linkedinIcon, wppIcon] = icons;
 ---
 
 <script>
@@ -25,14 +32,16 @@ import linkedinIcon from "@/assets/linkedin_icon.svg";
       <div class="flex w-full items-center justify-center gap-8">
         <div class="divider growLeft max-w-20 bg-secondary"></div>
         <Image
+          inferSize
           class="w-1/2 max-w-40 md:w-full"
-          src={footerImage}
+          src={curveText}
           alt="Las palabras ParchaTech y 2025 formando un círculo"
         />
         <div class="divider growRight max-w-20 bg-secondary"></div>
       </div>
       <Image
-        src={arrow}
+        inferSize
+        src={arrowUp}
         alt="Flecha apuntando hacía arriba"
         class="bounce absolute"
       />
@@ -42,17 +51,20 @@ import linkedinIcon from "@/assets/linkedin_icon.svg";
     <a
       href="https://www.instagram.com/parchatech/"
       target="_blank"
-      class="onHover"><Image src={instagramIcon} alt="Logo de Instagram" /></a
+      class="onHover"
+      ><Image inferSize src={instagramIcon} alt="Logo de Instagram" /></a
     >
     <a
       href="https://chat.whatsapp.com/FFI7K3KVypB4OVm5CcRmQB"
       target="_blank"
-      class="onHover"><Image src={wppIcon} alt="Logo de Whatsapp" /></a
+      class="onHover"
+      ><Image inferSize src={wppIcon} alt="Logo de Whatsapp" /></a
     >
     <a
       href="https://www.linkedin.com/company/parchatech"
       target="_blank"
-      class="onHover"><Image src={linkedinIcon} alt="Logo de LinkedIn" /></a
+      class="onHover"
+      ><Image inferSize src={linkedinIcon} alt="Logo de LinkedIn" /></a
     >
   </div>
 </footer>

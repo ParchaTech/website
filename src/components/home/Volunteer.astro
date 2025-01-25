@@ -6,7 +6,10 @@ import { Image } from "astro:assets";
 import Button from "@/components/Button.astro";
 
 // Assets
-import teamPhoto from "@/assets/team_photo.webp";
+import { getAsset } from "@/lib/contentful/queries";
+import { TEAM_PHOTO_ID } from "@/lib/constants";
+
+const teamPhoto = await getAsset(TEAM_PHOTO_ID);
 ---
 
 <script>
@@ -43,6 +46,7 @@ import teamPhoto from "@/assets/team_photo.webp";
       />
     </div>
     <Image
+      inferSize
       class="w-full xl:w-1/2"
       src={teamPhoto}
       alt="Un grupo de tres personas, sentadas en una mesa mientras trabajan y comparten ideas."
