@@ -1,36 +1,3 @@
-.bg__grid-overlay {
-  position: absolute;
-  background-image: linear-gradient(
-      var(--secondary-color) 10%,
-      rgba(0, 0, 0, 0) 50%
-    ),
-    url("../../assets/grid.svg");
-  background-size: auto;
-  background-position: left;
-  background-repeat: repeat;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-
-.bg__grid-overlay-radial {
-  position: absolute;
-  background-image: radial-gradient(
-      circle,
-      rgba(255, 255, 255, 0) 10%,
-      var(--secondary-color) 60%
-    ),
-    url("../../assets/grid.svg");
-  background-position: center;
-  background-size: auto;
-  background-repeat: repeat;
-  width: 100%;
-  height: 500px;
-  z-index: -1;
-  pointer-events: none;
-}
-
 .divider {
   display: block;
   width: 100%;

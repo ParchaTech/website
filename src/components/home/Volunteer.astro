@@ -7,7 +7,7 @@ import Button from "@/components/Button.astro";
 
 // Assets
 import { getAsset } from "@/lib/contentful/queries";
-import { TEAM_PHOTO_ID } from "@/lib/constants";
+import { TEAM_PHOTO_ID } from "@/lib/contentful/constants";
 
 const teamPhoto = await getAsset(TEAM_PHOTO_ID);
 ---
