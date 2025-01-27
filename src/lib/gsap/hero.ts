@@ -1,10 +1,22 @@
 import gsap from "gsap";
 import SplitType from "split-type";
 
+const heroTimeline = () => {
+  const timeline = gsap.timeline();
+
+  timeline.fromTo(
+    "#hero",
+    { autoAlpha: 0 },
+    { autoAlpha: 1, opacity: 1, duration: 0.2 },
+  );
+
+  return timeline;
+};
+
 const backgroundTimeline = () => {
   const timeline = gsap.timeline({
     defaults: {
-      autoAlpha: 0.1,
+      autoAlpha: 0.2,
       duration: 1,
       ease: "back.Out",
     },
@@ -59,7 +71,7 @@ const textTimeline = () => {
 
   timeline.from(".hero__header .char", {
     duration: 1.5,
-    opacity: 0,
+    autoAlpha: 0,
     scale: 0,
     y: 80,
     rotationX: 180,
@@ -100,12 +112,17 @@ const buttonTimeline = () => {
 const logoTimeline = () => {
   const timeline = gsap.timeline();
 
-  timeline.from(
+  timeline.fromTo(
     ".header-layout > img",
     {
       autoAlpha: 0,
+      opacity: 0,
       duration: 1.5,
       ease: "back.Out",
+    },
+    {
+      opacity: 1,
+      autoAlpha: 1,
     },
     "<0.5",
   );
@@ -116,6 +133,7 @@ const logoTimeline = () => {
 const createHeroAnimations = () => {
   const master = gsap.timeline();
 
+  master.add(heroTimeline());
   master.add(backgroundTimeline());
   master.add(spheresTimeline(), ">-0.8");
   master.add(textTimeline(), "<-1");
