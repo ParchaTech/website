@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -22,8 +24,10 @@
     "typescript": "^5.6.2"
   },
   "devDependencies": {
+    "@vitest/coverage-v8": "3.0.4",
     "prettier": "3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.8"
+    "prettier-plugin-tailwindcss": "^0.6.8",
+    "vitest": "^3.0.4"
   }
 }
